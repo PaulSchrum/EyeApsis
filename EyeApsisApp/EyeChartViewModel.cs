@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Data;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using System.Timers;
 
 namespace EyeApsisApp
 {
@@ -18,22 +19,21 @@ namespace EyeApsisApp
       {
          this.SubjectDistance = 20;
          ChartLines = new ObservableCollection<ChartLine>();
-         ChartLines.Add(new ChartLine(initialSnellenDenominator: 100.0));
+         //ChartLines.Add(new ChartLine(initialSnellenDenominator: 100.0));
          ChartLines.Add(new ChartLine(initialSnellenDenominator: 60.0));
          ChartLines.Add(new ChartLine(initialSnellenDenominator: 40.0));
+         ChartLines.Add(new ChartLine(initialSnellenDenominator: 30.0));
          ChartLines.Add(new ChartLine(initialSnellenDenominator: 20.0));
          ChartLines.Add(new ChartLine(initialSnellenDenominator: 15.0));
          ChartLines.Add(new ChartLine(initialSnellenDenominator: 10.0));
          updateAllChartLines();
          LeftBackgroundBrush = Brushes.White;
          RightBackgroundBrush = Brushes.White;
-         //LeftBackgroundBrush = Brushes.Red;
-         //RightBackgroundBrush = Brushes.Green;
-         BackgroundIsVisible = true;
 
          ToggleBackgroundCmd = new RelayCommand(toggleBicolorBackground, () => canToggleBackground);
          ShuffleLettersCmd = new RelayCommand(shuffleLetters, () => canShuffleLetters);
-
+         reshuffleTimer.Elapsed += new ElapsedEventHandler((source, e) => shuffleLetters());
+         ReshuffleInterval = 7;
       }
 
       public ObservableCollection<ChartLine> ChartLines
@@ -74,26 +74,28 @@ namespace EyeApsisApp
          }
       }
 
-      public Visibility BackgroundVisibility_;
-      public Visibility BackgroundVisibility
-      {
-         get { return BackgroundVisibility_; }
-         set { BackgroundVisibility_ = value; RaisePropertyChanged("BackgroundVisibility"); }
-      }
+      private Timer reshuffleTimer = new Timer();
 
-      private Boolean backgroundIsVisible_;
-      public Boolean BackgroundIsVisible
+      private Double reshuffleInterval_;
+      public Double ReshuffleInterval
       {
-         get { return backgroundIsVisible_; }
+         get { return reshuffleInterval_; }
          set 
          { 
-            backgroundIsVisible_ = value;
-            if (backgroundIsVisible_ == true)
-               BackgroundVisibility = Visibility.Visible;
+            reshuffleInterval_ = value;
+            if (value == 0.0)
+            {
+               reshuffleTimer.Stop();
+               reshuffleTimer.Enabled = false;
+            }
             else
-               BackgroundVisibility = Visibility.Hidden;
+            {
+               reshuffleTimer.Interval = value * 1000;
+               reshuffleTimer.Enabled = true;
+               reshuffleTimer.Start();
+            }
 
-            RaisePropertyChanged("BackgroundIsVisible"); 
+            RaisePropertyChanged("ReshuffleInterval");
          }
       }
 
