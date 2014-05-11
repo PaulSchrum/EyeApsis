@@ -190,6 +190,8 @@ namespace EyeApsisApp
          shuffle();
       }
 
+      // See http://en.wikipedia.org/wiki/Dingbat#Unicode_dingbats
+      //    for a bunch of good ones to choose from for children
       private void initializeStaticList()
       {
          if (null == Letterset) Letterset = new List<char>();
@@ -207,7 +209,16 @@ namespace EyeApsisApp
             Letterset.Add('U');
             Letterset.Add('V');
             Letterset.Add('Z');
-            Letterset.Add('♠');
+            Letterset.Add('♠');  // Not standard.  Example of Unicode dingbat
+                                 // for use with children -- to show how
+                                 // easy it is.
+            //Letterset.Add('✄');
+            //Letterset.Add('✈');
+            //Letterset.Add('✎');
+            //Letterset.Add('✔');
+            //Letterset.Add('✰');
+            //Letterset.Add('♥');
+            //Letterset.Add('⊨');
          }
       }
 
