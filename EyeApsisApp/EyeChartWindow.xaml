@@ -19,16 +19,18 @@
             <RowDefinition Height="98*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <!--<Grid.DataContext>
+        <Grid.DataContext>
             <local:EyeChartViewModel/>
-        </Grid.DataContext>-->
+        </Grid.DataContext>
         <Rectangle Grid.Row="1" Grid.Column="1" Grid.RowSpan="1" Fill="{Binding LeftBackgroundBrush}" StrokeThickness="0" 
                    Visibility="{Binding BackgroundVisibility, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
         <Rectangle Grid.Row="1" Grid.Column="3" Grid.RowSpan="1" Fill="{Binding RightBackgroundBrush}" 
                    Visibility="{Binding BackgroundVisibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <ListBox Grid.Row="1" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="4"
-                 ItemsSource="{Binding ChartLines}" BorderBrush="{x:Null}" HorizontalContentAlignment="Stretch" Background="{x:Null}">
+                 Opacity="{Binding TestLettersCalibrationOpacity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 ItemsSource="{Binding ChartLines}" BorderBrush="{x:Null}" 
+                 HorizontalContentAlignment="Stretch" Background="{x:Null}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -50,5 +52,11 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <Rectangle 
+            Opacity="{Binding CalibrationBarOpacity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="1" Height="24" 
+            Width="{Binding HorizontalCalibration.AdjustedLength}" Fill="Black"
+            >
+        </Rectangle>
     </Grid>
 </Window>

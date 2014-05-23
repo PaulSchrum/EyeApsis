@@ -27,11 +27,36 @@ namespace EyeApsisApp
          chartWindow = new EyeChartWindow();
       }
 
+      protected bool IsSingleScreen
+      {
+         get 
+         {
+            return
+               (Math.Abs(
+               SystemParameters.PrimaryScreenWidth - SystemParameters.VirtualScreenWidth) < 2.0);
+         }
+         set { }
+      }
       public void openChartWindowOnTheRightScreen()
       {
-         ((Grid) chartWindow.Content).DataContext = ((Grid)this.Content).DataContext;
+         ((Grid)chartWindow.Content).DataContext = ((Grid)this.Content).DataContext;
          chartWindow.DataContext = this.DataContext;
-         chartWindow.Left = this.Left + 16 * 96;  // get the window onto the right screen
+
+         if (this.IsSingleScreen == false)
+         {
+            if (SystemParameters.VirtualScreenLeft < 0.0)
+            { // get the window onto the secondary screen (left screen)
+               chartWindow.Left = SystemParameters.VirtualScreenLeft + 20;
+            }
+            else
+            {   // get the window onto the secondary screen (right screen)
+               chartWindow.Left =
+                  SystemParameters.MaximizedPrimaryScreenWidth + 20;
+            }
+         }
+         // else single screen, no changes neccessary to window locations.
+         // it just works.
+
          chartWindow.Show();
          chartWindow.WindowState = System.Windows.WindowState.Maximized;
       }
@@ -44,7 +69,6 @@ namespace EyeApsisApp
       private void ControlWindow_ContentRendered(object sender, EventArgs e)
       {
          openChartWindowOnTheRightScreen();
-         
       }
 
       private void ControlWindow_KeyUp(object sender, KeyEventArgs e)

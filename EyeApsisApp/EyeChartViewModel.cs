@@ -34,7 +34,65 @@ namespace EyeApsisApp
          ShuffleLettersCmd = new RelayCommand(shuffleLetters, () => canShuffleLetters);
          reshuffleTimer.Elapsed += new ElapsedEventHandler((source, e) => shuffleLetters());
          ReshuffleInterval = 7;
+         HorizontalCalibration = new Calibration();
+         VerticalCalibration = new Calibration();
+         InCalibrationMode = true;
       }
+
+      private bool inCalibrationMode_;
+      public bool InCalibrationMode
+      {
+         get { return inCalibrationMode_; }
+         set
+         {
+            inCalibrationMode_ = value;
+            RaisePropertyChanged("InCalibrationMode");
+            if(value == true)
+            {
+               CalibrationBarOpacity = 1.0;
+               TestLettersCalibrationOpacity = 0.10;
+            }
+            else
+            {
+               CalibrationBarOpacity = 0.0;
+               TestLettersCalibrationOpacity = 1.0;
+            }
+         }
+      }
+
+      private Calibration horizontalCalibration_;
+      public Calibration HorizontalCalibration
+      {
+         get { return horizontalCalibration_; }
+         set
+         {
+            horizontalCalibration_ = value;
+            RaisePropertyChanged("HorizontalCalibration");
+         }
+      }
+
+      private Calibration verticalCalibration_;
+      public Calibration VerticalCalibration
+      {
+         get { return verticalCalibration_; }
+         set
+         {
+            verticalCalibration_ = value;
+            RaisePropertyChanged("VerticalCalibration");
+         }
+      }
+
+      private Double calibrationBarOpacity_;
+      public Double CalibrationBarOpacity
+      {
+         get { return calibrationBarOpacity_; }
+         set
+         {
+            calibrationBarOpacity_ = value;
+            RaisePropertyChanged("CalibrationBarOpacity");
+         }
+      }
+
 
       public ObservableCollection<ChartLine> ChartLines
       { get; private set; }
@@ -107,6 +165,17 @@ namespace EyeApsisApp
             {
                aLine.SubjectDistance = this.subjectDistance_;
             }
+         }
+      }
+
+      private Double testLettersCalibrationOpacity_;
+      public Double TestLettersCalibrationOpacity
+      {
+         get { return testLettersCalibrationOpacity_; }
+         set
+         {
+            testLettersCalibrationOpacity_ = value;
+            RaisePropertyChanged("TestLettersCalibrationOpacity");
          }
       }
 
@@ -351,4 +420,53 @@ namespace EyeApsisApp
       }
    }
 
+   public class Calibration : INotifyPropertyChanged
+   {
+
+      public Calibration()
+      {
+         DesiredLength = 3.0;
+         AdjustmentMultiplier = 1.0;
+      }
+
+      private Double desiredLength_;
+      public Double DesiredLength
+      {
+         get { return desiredLength_; }
+         set 
+         {
+            desiredLength_ = value;
+            RaisePropertyChanged("DesiredLength");
+            RaisePropertyChanged("AdjustedLength");
+         }
+      }
+
+      public Double adjustmentMultiplier_;
+      public Double AdjustmentMultiplier
+      {
+         get { return adjustmentMultiplier_; }
+         set
+         {
+            adjustmentMultiplier_ = value;
+            RaisePropertyChanged("AdjustmentMultiplier");
+            RaisePropertyChanged("AdjustedLength");
+         }
+      }
+
+      public Double adjustedLength_;
+      public Double AdjustedLength
+      {
+         get { return 96.0 * desiredLength_ * adjustmentMultiplier_; }
+         set { }
+      }
+
+      public event PropertyChangedEventHandler PropertyChanged;
+      public void RaisePropertyChanged(String prop)
+      {
+         if (null != PropertyChanged)
+         {
+            PropertyChanged(this, new PropertyChangedEventArgs(prop));
+         }
+      }
+   }
 }

@@ -63,6 +63,26 @@
                         ></toolkit:ColorPicker>
                 </StackPanel>
             </Expander>
+            <Expander Header="Calibration" IsExpanded="{Binding InCalibrationMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                      BorderBrush="White" Foreground="#FF8BABD9" 
+                      Focusable="False" Margin="0,0,-0.4,0">
+                <WrapPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Background="Bisque">
+                        <TextBlock>Vertical: Desired Length:</TextBlock>
+                        <TextBox MaxWidth="60" Text="{Binding VerticalCalibration.DesiredLength, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"></TextBox>
+                        <Rectangle Width="20"></Rectangle>
+                        <TextBlock>Multiplier:</TextBlock>
+                        <TextBox MaxWidth="60" Text="{Binding VerticalCalibration.AdjustmentMultiplier, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Background="Bisque">
+                        <TextBlock>Horizontal: Desired Length:</TextBlock>
+                        <TextBox MaxWidth="60" Text="{Binding HorizontalCalibration.DesiredLength, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"></TextBox>
+                        <Rectangle Width="20"></Rectangle>
+                        <TextBlock>Multiplier:</TextBlock>
+                        <TextBox MaxWidth="60" Text="{Binding HorizontalCalibration.AdjustmentMultiplier, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"></TextBox>
+                    </StackPanel>
+                </WrapPanel>
+            </Expander>
         </StackPanel>
     </Grid>
 </Window>
