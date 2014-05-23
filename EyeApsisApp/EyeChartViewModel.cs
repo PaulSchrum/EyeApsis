@@ -34,7 +34,7 @@ namespace EyeApsisApp
          ShuffleLettersCmd = new RelayCommand(shuffleLetters, () => canShuffleLetters);
          reshuffleTimer.Elapsed += new ElapsedEventHandler((source, e) => shuffleLetters());
          ReshuffleInterval = 7;
-         HorizontalCalibration = new Calibration();
+         HorizontalCalibration = new Calibration();  // note, we don't actually use this right now.
          VerticalCalibration = new Calibration();
          InCalibrationMode = true;
          this.VerticalCalibration.AdjustmentMultiplier = 1.0;
