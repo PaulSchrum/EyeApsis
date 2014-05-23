@@ -39,8 +39,11 @@ namespace EyeApsisApp
       }
       public void openChartWindowOnTheRightScreen()
       {
+         EyeChartViewModel vm = (((Grid)this.Content).DataContext) as EyeChartViewModel;
          ((Grid)chartWindow.Content).DataContext = ((Grid)this.Content).DataContext;
          chartWindow.DataContext = this.DataContext;
+         vm.VerticalCalibration.AdjustmentMultiplier = 
+            Convert.ToDouble(Properties.Settings.Default.VerticalAdjustmentFactor);
 
          if (this.IsSingleScreen == false)
          {
@@ -63,6 +66,7 @@ namespace EyeApsisApp
 
       private void ControlWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
       {
+         saveVerticalMultiplier();
          Environment.Exit(0);
       }
 
@@ -83,6 +87,23 @@ namespace EyeApsisApp
          Double adder = 0.01;
          if (delta < 0) adder = -0.01;
          this.VerticalMultiplierText.Text = ((Convert.ToDouble(this.VerticalMultiplierText.Text)) + adder).ToString();
+      }
+
+      private void Expander_Collapsed(object sender, RoutedEventArgs e)
+      {
+         if (((Expander)sender).Name == "CalibrationExpander")
+         {
+            saveVerticalMultiplier();
+         }
+      }
+
+      protected void saveVerticalMultiplier()
+      {
+         if (Properties.Settings.Default.VerticalAdjustmentFactor != this.VerticalMultiplierText.Text)
+         {
+            Properties.Settings.Default.VerticalAdjustmentFactor = this.VerticalMultiplierText.Text;
+            Properties.Settings.Default.Save();
+         }
       }
    }
 

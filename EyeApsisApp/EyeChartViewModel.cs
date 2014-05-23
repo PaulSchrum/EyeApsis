@@ -37,7 +37,7 @@ namespace EyeApsisApp
          HorizontalCalibration = new Calibration();  // note, we don't actually use this right now.
          VerticalCalibration = new Calibration();
          InCalibrationMode = true;
-         this.VerticalCalibration.AdjustmentMultiplier = 1.0;
+         //this.VerticalCalibration.AdjustmentMultiplier = 1.0;
          this.VerticalCalibration.notifyAdjustmentMultiplyerChanged += verticalAdjustmentChanged;
       }
 

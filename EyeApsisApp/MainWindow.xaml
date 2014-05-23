@@ -63,9 +63,9 @@
                         ></toolkit:ColorPicker>
                 </StackPanel>
             </Expander>
-            <Expander Header="Calibration" IsExpanded="{Binding InCalibrationMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            <Expander x:Name="CalibrationExpander" Header="Calibration" IsExpanded="{Binding InCalibrationMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                       BorderBrush="White" Foreground="#FF8BABD9" 
-                      Focusable="False" Margin="0,0,-0.4,0">
+                      Focusable="False" Margin="0,0,-0.4,0" Collapsed="Expander_Collapsed">
                 <WrapPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" Background="Bisque">
                         <TextBlock>Vertical: Desired Length:</TextBlock>
