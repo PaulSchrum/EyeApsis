@@ -37,8 +37,28 @@ namespace EyeApsisApp
          HorizontalCalibration = new Calibration();
          VerticalCalibration = new Calibration();
          InCalibrationMode = true;
+         this.VerticalCalibration.AdjustmentMultiplier = 1.0;
+         this.VerticalCalibration.notifyAdjustmentMultiplyerChanged += verticalAdjustmentChanged;
       }
 
+      protected Timer vertAdustTimer;
+      protected ElapsedEventHandler verticalAdjustmentDelayMethod;
+      protected void verticalAdjustmentChanged(object sender, PropertyChangedEventArgs e)
+      {
+         verticalAdjustmentDelayMethod = new ElapsedEventHandler(updateAllChartLines);
+         vertAdustTimer = new Timer(2.0);
+         vertAdustTimer.Elapsed += verticalAdjustmentDelayMethod;
+         vertAdustTimer.Enabled = true;
+      }
+
+      private void updateAllChartLines(object sender, ElapsedEventArgs e)
+      {
+         updateAllChartLines();
+         vertAdustTimer.Elapsed -= verticalAdjustmentDelayMethod;
+         vertAdustTimer.Dispose();
+         vertAdustTimer = null;
+      }
+      
       private bool inCalibrationMode_;
       public bool InCalibrationMode
       {
@@ -79,6 +99,7 @@ namespace EyeApsisApp
          {
             verticalCalibration_ = value;
             RaisePropertyChanged("VerticalCalibration");
+            updateAllChartLines();
          }
       }
 
@@ -164,6 +185,10 @@ namespace EyeApsisApp
             foreach (var aLine in ChartLines)
             {
                aLine.SubjectDistance = this.subjectDistance_;
+               if (null != this.VerticalCalibration)
+                  aLine.VerticalModifier = this.VerticalCalibration.AdjustmentMultiplier;
+               else
+                  aLine.VerticalModifier = 1.0;
             }
          }
       }
@@ -327,8 +352,17 @@ namespace EyeApsisApp
       private readonly static Double degreeToRadian = Math.PI / 180.0;
       private Double computeLetterHeightInInches()
       {
-         Double retVal = SubjectDistance * 24.0 * Math.Tan(degreeToRadian * SnellenDenominator / 480);
+         Double retVal = this.verticalModifier_ *
+            SubjectDistance * 24.0 * Math.Tan(degreeToRadian * SnellenDenominator / 480);
          return retVal;
+      }
+
+      private Double verticalModifier_;
+      internal Double VerticalModifier
+      {
+         get { return verticalModifier_; }
+         set
+         { verticalModifier_ = value; RaisePropertyChanged("VerticalModifier"); }
       }
 
       public Double LetterFontSize
@@ -450,8 +484,12 @@ namespace EyeApsisApp
             adjustmentMultiplier_ = value;
             RaisePropertyChanged("AdjustmentMultiplier");
             RaisePropertyChanged("AdjustedLength");
+            if (null != notifyAdjustmentMultiplyerChanged)
+               notifyAdjustmentMultiplyerChanged(null, null);
          }
       }
+
+      internal event PropertyChangedEventHandler notifyAdjustmentMultiplyerChanged;
 
       public Double adjustedLength_;
       public Double AdjustedLength

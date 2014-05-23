@@ -76,6 +76,14 @@ namespace EyeApsisApp
          if (e.Key == Key.Escape)
             Environment.Exit(0);
       }
+
+      private void TextBox_MouseWheel_1(object sender, MouseWheelEventArgs e)
+      {
+         var delta = e.Delta;
+         Double adder = 0.01;
+         if (delta < 0) adder = -0.01;
+         this.VerticalMultiplierText.Text = ((Convert.ToDouble(this.VerticalMultiplierText.Text)) + adder).ToString();
+      }
    }
 
 }
