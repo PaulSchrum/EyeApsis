@@ -105,6 +105,21 @@ namespace EyeApsisApp
             Properties.Settings.Default.Save();
          }
       }
+
+      private void txt_TextOpacity_MouseWheel(object sender, MouseWheelEventArgs e)
+      {
+         Double textOpacity = Convert.ToDouble(this.txt_TextOpacity.Text);
+         var delta = e.Delta;
+         Double adder = 0.1;
+         if (textOpacity < 0.4) adder = 0.01;
+         if (textOpacity < 0.12) adder = 0.001;
+         if (delta < 0) adder *= -1;
+         Double result = textOpacity + adder;
+         if (result > 1) result = 1;
+         if (result < 0.001) result = 0.001;
+         this.txt_TextOpacity.Text = result.ToString();
+      }
+
    }
 
 }

@@ -13,7 +13,7 @@ using System.Timers;
 
 namespace EyeApsisApp
 {
-   public class EyeChartViewModel : INotifyPropertyChanged
+   public class EyeChartViewModel : INotifyPropertyChanged, IDisposable
    {
       public EyeChartViewModel()
       {
@@ -29,6 +29,7 @@ namespace EyeApsisApp
          updateAllChartLines();
          LeftBackgroundBrush = Brushes.White;
          RightBackgroundBrush = Brushes.White;
+         TextForegroundBrush = Brushes.Black;
 
          ToggleBackgroundCmd = new RelayCommand(toggleBicolorBackground, () => canToggleBackground);
          ShuffleLettersCmd = new RelayCommand(shuffleLetters, () => canShuffleLetters);
@@ -37,7 +38,6 @@ namespace EyeApsisApp
          HorizontalCalibration = new Calibration();  // note, we don't actually use this right now.
          VerticalCalibration = new Calibration();
          InCalibrationMode = true;
-         //this.VerticalCalibration.AdjustmentMultiplier = 1.0;
          this.VerticalCalibration.notifyAdjustmentMultiplyerChanged += verticalAdjustmentChanged;
       }
 
@@ -70,13 +70,15 @@ namespace EyeApsisApp
             if(value == true)
             {
                CalibrationBarOpacity = 1.0;
-               TestLettersCalibrationOpacity = 0.10;
+               TestLettersOpacity = 0.10;
             }
             else
             {
                CalibrationBarOpacity = 0.0;
-               TestLettersCalibrationOpacity = 1.0;
+               TestLettersOpacity = 1.0;
             }
+            RaisePropertyChanged("TestLettersOpacity");
+            updateAllChartLines();
          }
       }
 
@@ -127,6 +129,15 @@ namespace EyeApsisApp
             subjectDistance_ = value;
             RaisePropertyChanged("SubjectDistance");
          }
+      }
+
+      private Brush textForegroundBrush_;
+      public Brush TextForegroundBrush
+      {
+         get
+         { return textForegroundBrush_; }
+         set
+         { textForegroundBrush_ = value; RaisePropertyChanged("TextForegroundBrush"); }
       }
 
       private Brush leftBackgroundBrush_;
@@ -185,6 +196,8 @@ namespace EyeApsisApp
             foreach (var aLine in ChartLines)
             {
                aLine.SubjectDistance = this.subjectDistance_;
+               aLine.ForegroundBrush = this.TextForegroundBrush;
+               aLine.LetterOpacity = this.TestLettersOpacity;// this.LetterOpacity;
                if (null != this.VerticalCalibration)
                   aLine.VerticalModifier = this.VerticalCalibration.AdjustmentMultiplier;
                else
@@ -193,14 +206,14 @@ namespace EyeApsisApp
          }
       }
 
-      private Double testLettersCalibrationOpacity_;
-      public Double TestLettersCalibrationOpacity
+      private Double testLettersOpacity_;
+      public Double TestLettersOpacity
       {
-         get { return testLettersCalibrationOpacity_; }
+         get { return testLettersOpacity_; }
          set
          {
-            testLettersCalibrationOpacity_ = value;
-            RaisePropertyChanged("TestLettersCalibrationOpacity");
+            testLettersOpacity_ = value;
+            RaisePropertyChanged("TestLettersOpacity");
          }
       }
 
@@ -242,6 +255,11 @@ namespace EyeApsisApp
          }
       }
 
+      public void Dispose()
+      {
+         if (null != reshuffleTimer) reshuffleTimer.Dispose();
+         if (null != vertAdustTimer) vertAdustTimer.Dispose();
+      }
    }
 
    // Copied from http://stackoverflow.com/questions/4160510/new-extended-wpftoolkit-colorpicker
@@ -281,6 +299,7 @@ namespace EyeApsisApp
       private void finishConstructors()
       {
          initializeStaticList();
+         //this.TextOpacity = 1.0;
          shuffle();
       }
 
@@ -347,6 +366,20 @@ namespace EyeApsisApp
       {
          get { return computeLetterHeightInInches(); }
          private set { }
+      }
+
+      private Double letterOpacity_;
+      public Double LetterOpacity
+      {
+         get { return letterOpacity_; }
+         set { letterOpacity_ = value; RaisePropertyChanged("LetterOpacity"); }
+      }
+
+      private Brush foregroundBrush_;
+      public Brush ForegroundBrush
+      {
+         get { return foregroundBrush_; }
+         set { foregroundBrush_ = value; RaisePropertyChanged("ForegroundBrush"); }
       }
 
       private readonly static Double degreeToRadian = Math.PI / 180.0;

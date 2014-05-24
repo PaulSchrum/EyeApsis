@@ -43,7 +43,10 @@
                         <TextBlock Text="{Binding Letters_String}" 
                                    Grid.Column="1" HorizontalAlignment="Center" 
                                    VerticalAlignment="Center" 
-                                   FontFamily="Arial Unicode MS" FontSize="{Binding LetterFontSize}" Foreground="Black">
+                                   FontFamily="Arial Unicode MS" 
+                                   FontSize="{Binding LetterFontSize}" 
+                                   Opacity="{Binding LetterOpacity}"
+                                   Foreground="{Binding ForegroundBrush}" >
                         </TextBlock>
                         <TextBlock Text="{Binding SnellenDenominator}" 
                                    Grid.Column="4" HorizontalAlignment="Center" FontSize="24"

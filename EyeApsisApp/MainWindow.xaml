@@ -63,6 +63,20 @@
                         ></toolkit:ColorPicker>
                 </StackPanel>
             </Expander>
+            <Expander Header="Text Appearance" Focusable="False"
+                       IsExpanded="False" BorderBrush="White" Foreground="#FF8BABD9">
+                <WrapPanel Orientation="Horizontal">
+                    <Label Foreground="#FFB6F596">Text _Color</Label>
+                    <toolkit:ColorPicker 
+                        SelectedColor="{Binding TextForegroundBrush, 
+                            Converter={StaticResource BrushColorConverter}, 
+                            Mode=TwoWay, 
+                            UpdateSourceTrigger=PropertyChanged}"
+                        ></toolkit:ColorPicker>
+                    <TextBlock Foreground="#FFB6F596" Margin="16,0">Text Opacity: </TextBlock>
+                    <TextBox x:Name="txt_TextOpacity" MinWidth="36" Text="{Binding TestLettersOpacity, UpdateSourceTrigger=PropertyChanged}" MouseWheel="txt_TextOpacity_MouseWheel"/>
+                </WrapPanel>
+            </Expander>
             <Expander x:Name="CalibrationExpander" Header="Calibration" IsExpanded="{Binding InCalibrationMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                       BorderBrush="White" Foreground="#FF8BABD9" 
                       Focusable="False" Margin="0,0,-0.4,0" Collapsed="Expander_Collapsed">
