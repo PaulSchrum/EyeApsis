@@ -122,7 +122,7 @@ namespace EyeApsisApp
       }
 
 
-      readonly protected Double leftDoubleClickTime = 0.3; // seconds
+      readonly protected Double doubleClickTime = 0.3; // seconds
       protected Timer doubleClickTimer;
       protected bool doubleClickPending = false;
       private void txt_TextOpacity_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -141,7 +141,7 @@ namespace EyeApsisApp
       private void txt_TextOpacity_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
       {
          doubleClickPending = true;
-         doubleClickTimer = new Timer(1000 * leftDoubleClickTime);
+         doubleClickTimer = new Timer(1000 * doubleClickTime);
          doubleClickTimer.Elapsed += new ElapsedEventHandler((source, ev) => deactivatePendingDoubleClick());
          doubleClickTimer.Start();
       }
@@ -169,9 +169,23 @@ namespace EyeApsisApp
       private void txt_TextOpacity_PreviewMouseRightButtonUp(object sender, MouseButtonEventArgs e)
       {
          doubleClickPending = true;
-         doubleClickTimer = new Timer(1000 * leftDoubleClickTime);
+         doubleClickTimer = new Timer(1000 * doubleClickTime);
          doubleClickTimer.Elapsed += new ElapsedEventHandler((source, ev) => deactivatePendingDoubleClick());
          doubleClickTimer.Start();
+      }
+
+      private void txt_BackgroundGrayscale_MouseWheel(object sender, MouseWheelEventArgs e)
+      {
+         Double textBackgroundGscale = Convert.ToDouble(this.txt_BackgroundGrayscale.Text);
+         var delta = e.Delta;
+         Double adder = 5;
+         //if (textBackgroundGscale < 0.4) adder = 0.01;
+         //if (textBackgroundGscale < 0.08) adder = 0.001;
+         if (delta < 0) adder *= -1;
+         Double result = textBackgroundGscale + adder;
+         if (result > 100) result = 100;
+         if (result < 0) result = 0;
+         this.txt_BackgroundGrayscale.Text = result.ToString();
       }
 
    }

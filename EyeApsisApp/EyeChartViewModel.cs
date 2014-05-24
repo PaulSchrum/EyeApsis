@@ -39,6 +39,47 @@ namespace EyeApsisApp
          VerticalCalibration = new Calibration();
          InCalibrationMode = true;
          this.VerticalCalibration.notifyAdjustmentMultiplyerChanged += verticalAdjustmentChanged;
+         BackgroundGrayScalePercent = 0.0;
+         SnellenDenominatorForegroundBrush = Brushes.Black;
+      }
+
+      protected Brush snellenDenominatorForegroundBrush_;
+      public Brush SnellenDenominatorForegroundBrush
+      {
+         get { return snellenDenominatorForegroundBrush_; }
+         private set { snellenDenominatorForegroundBrush_ = value; RaisePropertyChanged("SnellenDenominatorForegroundBrush"); }
+      }
+
+      protected Color backgroundColor_;
+      public Color BackgroundColor
+      {
+         get { return backgroundColor_; }
+         protected set { backgroundColor_ = value; RaisePropertyChanged("BackgroundColor"); }
+      }
+
+      protected Double backgroundGrayScalePercent_;
+      public Double BackgroundGrayScalePercent
+      {
+         get { return backgroundGrayScalePercent_; }
+         set 
+         { 
+            backgroundGrayScalePercent_ = value;
+            if (backgroundGrayScalePercent_ > 100.0) backgroundGrayScalePercent_ = 100.0;
+            if (backgroundGrayScalePercent_ < 0.0) backgroundGrayScalePercent_ = 0.0;
+            RaisePropertyChanged("BackgroundGrayScalePercent");
+            Double test = Byte.MaxValue * (1-(backgroundGrayScalePercent_ / 100.0));
+            Byte rgbByte = (Byte)test;
+            BackgroundColor = Color.FromRgb(rgbByte, rgbByte, rgbByte);
+            if (backgroundGrayScalePercent_ < 56.5)
+            {
+               SnellenDenominatorForegroundBrush = Brushes.Black;
+            }
+            else
+            {
+               SnellenDenominatorForegroundBrush = Brushes.White;
+            }
+            RaisePropertyChanged("SnellenDenominatorForegroundBrush");
+         }
       }
 
       protected Timer vertAdustTimer;
@@ -198,6 +239,7 @@ namespace EyeApsisApp
                aLine.SubjectDistance = this.subjectDistance_;
                aLine.ForegroundBrush = this.TextForegroundBrush;
                aLine.LetterOpacity = this.TestLettersOpacity;// this.LetterOpacity;
+               aLine.SnellenDenominatorForegroundBrush = this.SnellenDenominatorForegroundBrush;
                if (null != this.VerticalCalibration)
                   aLine.VerticalModifier = this.VerticalCalibration.AdjustmentMultiplier;
                else
@@ -380,6 +422,17 @@ namespace EyeApsisApp
       {
          get { return foregroundBrush_; }
          set { foregroundBrush_ = value; RaisePropertyChanged("ForegroundBrush"); }
+      }
+
+      private Brush snellenDenominatorForegroundBrush_;
+      public Brush SnellenDenominatorForegroundBrush
+      {
+         get { return snellenDenominatorForegroundBrush_; }
+         internal set
+         {
+            snellenDenominatorForegroundBrush_ = value;
+            RaisePropertyChanged("SnellenDenominatorForegroundBrush");
+         }
       }
 
       private readonly static Double degreeToRadian = Math.PI / 180.0;

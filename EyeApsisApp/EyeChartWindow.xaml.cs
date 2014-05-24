@@ -30,4 +30,27 @@ namespace EyeApsisApp
             Environment.Exit(0);
       }
    }
+
+   public class ColorToSolidColorBrushValueConverter : IValueConverter
+   {
+      public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+      {
+         if (null == value)
+         {
+            return null;
+         }
+         // For a more sophisticated converter, check also the targetType and react accordingly..
+         if (value is Color)
+         {
+            Color color = (Color)value;
+            return new SolidColorBrush(color);
+         }
+         else return null;
+      }
+
+      public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+      {
+         return null;
+      }
+   }
 }

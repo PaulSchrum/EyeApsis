@@ -6,7 +6,8 @@
     x:Name="ControlWindow" 
     Title="EyeApsis Control Window"
     x:Class="EyeApsisApp.MainWindow"
-         Height="250" Width="360" Closing="ControlWindow_Closing" ContentRendered="ControlWindow_ContentRendered" KeyUp="ControlWindow_KeyUp">
+         Height="250" Width="360" Closing="ControlWindow_Closing" ContentRendered="ControlWindow_ContentRendered" 
+    KeyUp="ControlWindow_KeyUp">
     <Window.Resources>
         <local:BrushColorConverter x:Key="BrushColorConverter"/>
     </Window.Resources>
@@ -73,7 +74,7 @@
                             Mode=TwoWay, 
                             UpdateSourceTrigger=PropertyChanged}"
                         ></toolkit:ColorPicker>
-                    <TextBlock Foreground="#FFB6F596" Margin="16,0">Text Opacity: </TextBlock>
+                    <Label Foreground="#FFB6F596" Margin="16,0">Text Opacity: </Label>
                     <TextBox x:Name="txt_TextOpacity" MinWidth="36" 
                              Text="{Binding TestLettersOpacity, UpdateSourceTrigger=PropertyChanged}" 
                              
@@ -82,6 +83,10 @@
                              PreviewMouseLeftButtonDown="txt_TextOpacity_PreviewMouseLeftButtonDown" 
                              PreviewMouseRightButtonDown="txt_TextOpacity_PreviewMouseRightButtonDown" 
                              ContextMenu="{x:Null}" PreviewMouseRightButtonUp="txt_TextOpacity_PreviewMouseRightButtonUp"/>
+                    <Label Foreground="#FFB6F596">Screen Background Grayscale: </Label>
+                    <TextBox x:Name="txt_BackgroundGrayscale" MinWidth="48"
+                             Text="{Binding BackgroundGrayScalePercent, UpdateSourceTrigger=PropertyChanged}" MouseWheel="txt_BackgroundGrayscale_MouseWheel"
+                             ></TextBox>
                 </WrapPanel>
             </Expander>
             <Expander x:Name="CalibrationExpander" Header="Calibration" IsExpanded="{Binding InCalibrationMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

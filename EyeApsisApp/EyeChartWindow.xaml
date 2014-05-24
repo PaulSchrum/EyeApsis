@@ -6,7 +6,13 @@
         Title="Eye Chart Window" WindowStartupLocation="Manual"
         Height="300" Width="300" WindowStyle="None" Topmost="True"
         AllowsTransparency="True" KeyUp="ChartWindow_KeyUp" >
-    <Grid UseLayoutRounding="True" VerticalAlignment="Center">
+    <Window.Resources>
+        <local:ColorToSolidColorBrushValueConverter  x:Key="ColorToSolidColorBrush_ValueConverter"/>
+    </Window.Resources>
+    <Grid UseLayoutRounding="True" 
+          VerticalAlignment="Center" >
+          <!--Background="{Binding Path=BackgroundColor, Converter={StaticResource ColorToSolidColorBrush_ValueConverter}}"-->
+          
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>
             <ColumnDefinition Width="40*"/>
@@ -30,7 +36,8 @@
         <ListBox Grid.Row="1" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="4"
                  Opacity="{Binding TestLettersCalibrationOpacity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  ItemsSource="{Binding ChartLines}" BorderBrush="{x:Null}" 
-                 HorizontalContentAlignment="Stretch" Background="{x:Null}">
+                 HorizontalContentAlignment="Stretch" 
+                 Background="{Binding Path=BackgroundColor, Converter={StaticResource ColorToSolidColorBrush_ValueConverter}}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -50,7 +57,9 @@
                         </TextBlock>
                         <TextBlock Text="{Binding SnellenDenominator}" 
                                    Grid.Column="4" HorizontalAlignment="Center" FontSize="24"
-                                   VerticalAlignment="Center"></TextBlock>
+                                   VerticalAlignment="Center"
+                                   Foreground="{Binding SnellenDenominatorForegroundBrush}"
+                                   ></TextBlock>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
