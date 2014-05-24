@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -112,12 +113,65 @@ namespace EyeApsisApp
          var delta = e.Delta;
          Double adder = 0.1;
          if (textOpacity < 0.4) adder = 0.01;
-         if (textOpacity < 0.12) adder = 0.001;
+         if (textOpacity < 0.08) adder = 0.001;
          if (delta < 0) adder *= -1;
          Double result = textOpacity + adder;
          if (result > 1) result = 1;
          if (result < 0.001) result = 0.001;
          this.txt_TextOpacity.Text = result.ToString();
+      }
+
+
+      readonly protected Double leftDoubleClickTime = 0.3; // seconds
+      protected Timer doubleClickTimer;
+      protected bool doubleClickPending = false;
+      private void txt_TextOpacity_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+      {
+         //System.Diagnostics.Debug.Print("PreviewMouseLeftButtonDown dcPending: " + doubleClickPending.ToString());
+         if (true == doubleClickPending)
+         {
+            Double val = 1.0;
+            this.txt_TextOpacity.Text = val.ToString();
+            doubleClickTimer.Dispose();
+            doubleClickTimer = null;
+         }
+         doubleClickPending = false;
+      }
+
+      private void txt_TextOpacity_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+      {
+         doubleClickPending = true;
+         doubleClickTimer = new Timer(1000 * leftDoubleClickTime);
+         doubleClickTimer.Elapsed += new ElapsedEventHandler((source, ev) => deactivatePendingDoubleClick());
+         doubleClickTimer.Start();
+      }
+
+      protected void deactivatePendingDoubleClick()
+      { 
+         doubleClickPending = false;
+         //if (null != left)
+         doubleClickTimer.Dispose();
+         doubleClickTimer = null;
+      }
+
+      private void txt_TextOpacity_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+      {
+         if (true == doubleClickPending)
+         {
+            Double val = 0.0;
+            this.txt_TextOpacity.Text = val.ToString();
+            doubleClickTimer.Dispose();
+            doubleClickTimer = null;
+         }
+         doubleClickPending = false;
+      }
+
+      private void txt_TextOpacity_PreviewMouseRightButtonUp(object sender, MouseButtonEventArgs e)
+      {
+         doubleClickPending = true;
+         doubleClickTimer = new Timer(1000 * leftDoubleClickTime);
+         doubleClickTimer.Elapsed += new ElapsedEventHandler((source, ev) => deactivatePendingDoubleClick());
+         doubleClickTimer.Start();
       }
 
    }

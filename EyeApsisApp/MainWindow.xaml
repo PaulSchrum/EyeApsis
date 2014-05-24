@@ -74,7 +74,14 @@
                             UpdateSourceTrigger=PropertyChanged}"
                         ></toolkit:ColorPicker>
                     <TextBlock Foreground="#FFB6F596" Margin="16,0">Text Opacity: </TextBlock>
-                    <TextBox x:Name="txt_TextOpacity" MinWidth="36" Text="{Binding TestLettersOpacity, UpdateSourceTrigger=PropertyChanged}" MouseWheel="txt_TextOpacity_MouseWheel"/>
+                    <TextBox x:Name="txt_TextOpacity" MinWidth="36" 
+                             Text="{Binding TestLettersOpacity, UpdateSourceTrigger=PropertyChanged}" 
+                             
+                             MouseWheel="txt_TextOpacity_MouseWheel" 
+                             PreviewMouseLeftButtonUp="txt_TextOpacity_PreviewMouseLeftButtonUp" 
+                             PreviewMouseLeftButtonDown="txt_TextOpacity_PreviewMouseLeftButtonDown" 
+                             PreviewMouseRightButtonDown="txt_TextOpacity_PreviewMouseRightButtonDown" 
+                             ContextMenu="{x:Null}" PreviewMouseRightButtonUp="txt_TextOpacity_PreviewMouseRightButtonUp"/>
                 </WrapPanel>
             </Expander>
             <Expander x:Name="CalibrationExpander" Header="Calibration" IsExpanded="{Binding InCalibrationMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
