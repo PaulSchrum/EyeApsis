@@ -188,6 +188,46 @@ namespace EyeApsisApp
          this.txt_BackgroundGrayscale.Text = result.ToString();
       }
 
+      private void txt_BackgroundGrayscale_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+      {
+         if (true == doubleClickPending)
+         {
+            Double val = 100.0;
+            this.txt_BackgroundGrayscale.Text = val.ToString();
+            doubleClickTimer.Dispose();
+            doubleClickTimer = null;
+         }
+         doubleClickPending = false;
+      }
+
+      private void txt_BackgroundGrayscale_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+      {
+         doubleClickPending = true;
+         doubleClickTimer = new Timer(1000 * doubleClickTime);
+         doubleClickTimer.Elapsed += new ElapsedEventHandler((source, ev) => deactivatePendingDoubleClick());
+         doubleClickTimer.Start();
+      }
+
+      private void txt_BackgroundGrayscale_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+      {
+         if (true == doubleClickPending)
+         {
+            Double val = 0.0;
+            this.txt_BackgroundGrayscale.Text = val.ToString();
+            doubleClickTimer.Dispose();
+            doubleClickTimer = null;
+         }
+         doubleClickPending = false;
+      }
+
+      private void txt_BackgroundGrayscale_PreviewMouseRightButtonUp(object sender, MouseButtonEventArgs e)
+      {
+         doubleClickPending = true;
+         doubleClickTimer = new Timer(1000 * doubleClickTime);
+         doubleClickTimer.Elapsed += new ElapsedEventHandler((source, ev) => deactivatePendingDoubleClick());
+         doubleClickTimer.Start();
+      }
+
    }
 
 }

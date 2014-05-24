@@ -85,7 +85,13 @@
                              ContextMenu="{x:Null}" PreviewMouseRightButtonUp="txt_TextOpacity_PreviewMouseRightButtonUp"/>
                     <Label Foreground="#FFB6F596">Screen Background Grayscale: </Label>
                     <TextBox x:Name="txt_BackgroundGrayscale" MinWidth="48"
-                             Text="{Binding BackgroundGrayScalePercent, UpdateSourceTrigger=PropertyChanged}" MouseWheel="txt_BackgroundGrayscale_MouseWheel"
+                             Text="{Binding BackgroundGrayScalePercent, UpdateSourceTrigger=PropertyChanged}" 
+                             MouseWheel="txt_BackgroundGrayscale_MouseWheel" 
+                             PreviewMouseLeftButtonDown="txt_BackgroundGrayscale_PreviewMouseLeftButtonDown" 
+                             PreviewMouseLeftButtonUp="txt_BackgroundGrayscale_PreviewMouseLeftButtonUp" 
+                             PreviewMouseRightButtonDown="txt_BackgroundGrayscale_PreviewMouseRightButtonDown" 
+                             PreviewMouseRightButtonUp="txt_BackgroundGrayscale_PreviewMouseRightButtonUp" 
+                             ContextMenu="{x:Null}" 
                              ></TextBox>
                 </WrapPanel>
             </Expander>
