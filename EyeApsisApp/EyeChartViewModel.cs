@@ -10,6 +10,8 @@ using System.Windows.Data;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Timers;
+using System.Media;
+using System.Speech.Synthesis;
 
 namespace EyeApsisApp
 {
@@ -50,11 +52,26 @@ namespace EyeApsisApp
          private set { snellenDenominatorForegroundBrush_ = value; RaisePropertyChanged("SnellenDenominatorForegroundBrush"); }
       }
 
+      // Todo: Eliminate this:
       protected Color backgroundColor_;
       public Color BackgroundColor
       {
          get { return backgroundColor_; }
          protected set { backgroundColor_ = value; RaisePropertyChanged("BackgroundColor"); }
+      }
+
+      protected Color adjustedLeftBackgroundColor_;
+      public Color AdjustedLeftBackgroundColor
+      {
+         get { return adjustedLeftBackgroundColor_; }
+         protected set { adjustedLeftBackgroundColor_ = value; RaisePropertyChanged("AdjustedLeftBackgroundColor"); }
+      }
+
+      protected Color adjustedRightBackgroundColor_;
+      public Color AdjustedRightBackgroundColor
+      {
+         get { return adjustedRightBackgroundColor_; }
+         protected set { adjustedRightBackgroundColor_ = value; RaisePropertyChanged("AdjustedRightBackgroundColor"); }
       }
 
       protected Double backgroundGrayScalePercent_;
@@ -69,8 +86,9 @@ namespace EyeApsisApp
             RaisePropertyChanged("BackgroundGrayScalePercent");
             Double test = Byte.MaxValue * (1-(backgroundGrayScalePercent_ / 100.0));
             Byte rgbByte = (Byte)test;
-            BackgroundColor = Color.FromRgb(rgbByte, rgbByte, rgbByte);
-            if (backgroundGrayScalePercent_ < 56.5)
+            AdjustedLeftBackgroundColor = AdjustBrushToColor(backgroundGrayScalePercent_, (SolidColorBrush)LeftBackgroundBrush);
+            AdjustedRightBackgroundColor = AdjustBrushToColor(backgroundGrayScalePercent_, (SolidColorBrush)RightBackgroundBrush);
+            if (backgroundGrayScalePercent_ < 101)
             {
                SnellenDenominatorForegroundBrush = Brushes.Black;
             }
@@ -80,6 +98,15 @@ namespace EyeApsisApp
             }
             RaisePropertyChanged("SnellenDenominatorForegroundBrush");
          }
+      }
+
+      protected Color AdjustBrushToColor(Double grayScalePercent, SolidColorBrush aBrush)
+      {
+         Double gs = 1.0 - (grayScalePercent / 100.0);
+         Double red = aBrush.Color.R; red *= gs;
+         Double green = aBrush.Color.G; green *= gs;
+         Double blue = aBrush.Color.B; blue *= gs;
+         return Color.FromRgb((Byte)red, (Byte)green, (Byte)blue);
       }
 
       protected Timer vertAdustTimer;
@@ -190,6 +217,7 @@ namespace EyeApsisApp
          {
             leftBackgroundBrush_ = value;
             RaisePropertyChanged("LeftBackgroundBrush");
+            AdjustedLeftBackgroundColor = AdjustBrushToColor(backgroundGrayScalePercent_, (SolidColorBrush)LeftBackgroundBrush);
          }
       }
 
@@ -202,8 +230,11 @@ namespace EyeApsisApp
          {
             rightBackgroundBrush_ = value;
             RaisePropertyChanged("RightBackgroundBrush");
+            AdjustedRightBackgroundColor = AdjustBrushToColor(backgroundGrayScalePercent_, (SolidColorBrush)RightBackgroundBrush);
          }
       }
+
+      //..
 
       private Timer reshuffleTimer = new Timer();
 

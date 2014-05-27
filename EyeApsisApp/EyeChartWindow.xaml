@@ -26,16 +26,16 @@
         <Grid.DataContext>
             <local:EyeChartViewModel/>
         </Grid.DataContext>
-        <Rectangle Grid.Row="1" Grid.Column="1" Grid.RowSpan="1" Fill="{Binding LeftBackgroundBrush}" StrokeThickness="0" 
-                   Visibility="{Binding BackgroundVisibility, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
-        <Rectangle Grid.Row="1" Grid.Column="3" Grid.RowSpan="1" Fill="{Binding RightBackgroundBrush}" 
-                   Visibility="{Binding BackgroundVisibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Rectangle Grid.Row="1" Grid.Column="1" Grid.RowSpan="1" StrokeThickness="0"
+                   Fill="{Binding AdjustedLeftBackgroundColor, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ColorToSolidColorBrush_ValueConverter}}"  
+                   />
+        <Rectangle Grid.Row="1" Grid.Column="3" Grid.RowSpan="1" 
+                   Fill="{Binding AdjustedRightBackgroundColor, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ColorToSolidColorBrush_ValueConverter}}"
+                   />
 
         <ListBox Grid.Row="1" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="4"
-                 Opacity="{Binding TestLettersCalibrationOpacity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  ItemsSource="{Binding ChartLines}" BorderBrush="{x:Null}" 
-                 HorizontalContentAlignment="Stretch" 
-                 Background="{Binding Path=BackgroundColor, Converter={StaticResource ColorToSolidColorBrush_ValueConverter}}">
+                 HorizontalContentAlignment="Stretch" Background="{x:Null}" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
