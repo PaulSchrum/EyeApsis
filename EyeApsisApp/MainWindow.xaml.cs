@@ -26,6 +26,7 @@ namespace EyeApsisApp
       {
          InitializeComponent();
          chartWindow = new EyeChartWindow();
+         chartWindow.mainWindow = this;
       }
 
       protected bool IsSingleScreen
@@ -57,12 +58,21 @@ namespace EyeApsisApp
                chartWindow.Left =
                   SystemParameters.MaximizedPrimaryScreenWidth + 20;
             }
+            chartWindow.Topmost = true;
          }
-         // else single screen, no changes neccessary to window locations.
-         // it just works.
+         else //single screen, no changes neccessary to window location
+         {  // but lets move it a little anyway so it is not on top
+            // of the main window
+            chartWindow.Left = this.Left + 96;
+            chartWindow.Topmost = false;
+            this.Topmost = true;
+         }
 
          chartWindow.Show();
          chartWindow.WindowState = System.Windows.WindowState.Maximized;
+         this.Show();
+         this.BringIntoView();
+         
       }
 
       private void ControlWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)

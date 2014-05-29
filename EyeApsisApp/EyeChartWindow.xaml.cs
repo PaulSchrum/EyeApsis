@@ -24,11 +24,44 @@ namespace EyeApsisApp
          InitializeComponent();
       }
 
+      public MainWindow mainWindow { get; set; }
+
       private void ChartWindow_KeyUp(object sender, KeyEventArgs e)
       {
          if (e.Key == Key.Escape)
             Environment.Exit(0);
+         Type t = sender.GetType();
       }
+
+      private bool thisWindowShouldBeTopmost_;
+      private bool ThisWindowShouldBeTopmost
+      {
+         get { return thisWindowShouldBeTopmost_; }
+         set
+         {
+            if (thisWindowShouldBeTopmost_ == value) return;
+            thisWindowShouldBeTopmost_ = value;
+            if (true == thisWindowShouldBeTopmost_)
+            {
+               this.mainWindow.Topmost = false;
+               this.Topmost = true;
+            }
+            else
+            {
+               this.Topmost = false;
+               this.mainWindow.Topmost = true;
+            }
+         }
+      }
+
+      private void ChartWindow_MouseMove(object sender, MouseEventArgs e)
+      {
+         if ((e.GetPosition(this).X > this.ActualWidth/2.0))
+            this.ThisWindowShouldBeTopmost = true;
+         else
+            this.ThisWindowShouldBeTopmost = false;
+      }
+
    }
 
    public class ColorToSolidColorBrushValueConverter : IValueConverter

@@ -5,7 +5,7 @@
         x:Name="ChartWindow" x:Class="EyeApsisApp.EyeChartWindow"
         Title="Eye Chart Window" WindowStartupLocation="Manual"
         Height="300" Width="300" WindowStyle="None" Topmost="True"
-        AllowsTransparency="True" KeyUp="ChartWindow_KeyUp" >
+        AllowsTransparency="True" KeyUp="ChartWindow_KeyUp" MouseMove="ChartWindow_MouseMove"  >
     <Window.Resources>
         <local:ColorToSolidColorBrushValueConverter  x:Key="ColorToSolidColorBrush_ValueConverter"/>
     </Window.Resources>
