@@ -44,7 +44,7 @@ namespace EyeApsisApp
          EyeChartViewModel vm = (((Grid)this.Content).DataContext) as EyeChartViewModel;
          ((Grid)chartWindow.Content).DataContext = ((Grid)this.Content).DataContext;
          chartWindow.DataContext = this.DataContext;
-         vm.VerticalCalibration.AdjustmentMultiplier = 
+         vm.VerticalCalibration.AdjustmentMultiplier =
             Convert.ToDouble(Properties.Settings.Default.VerticalAdjustmentFactor);
 
          if (this.IsSingleScreen == false)
@@ -110,9 +110,15 @@ namespace EyeApsisApp
 
       protected void saveVerticalMultiplier()
       {
-         if (Properties.Settings.Default.VerticalAdjustmentFactor != this.VerticalMultiplierText.Text)
+         if (Properties.Settings.Default.VerticalAdjustmentFactor != 
+               this.VerticalMultiplierText.Text)
          {
-            Properties.Settings.Default.VerticalAdjustmentFactor = this.VerticalMultiplierText.Text;
+            Double vertAdj = Convert.ToDouble(this.VerticalMultiplierText.Text);
+            if (vertAdj > 2.5) vertAdj = 2.5;
+            if (vertAdj < 0.2) vertAdj = 0.2;
+            String vertAdjStr = String.Format("{0:0.00}", vertAdj);
+            Properties.Settings.Default.VerticalAdjustmentFactor =
+               vertAdjStr;
             Properties.Settings.Default.Save();
          }
       }

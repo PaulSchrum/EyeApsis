@@ -196,6 +196,7 @@ namespace EyeApsisApp
          {
             subjectDistance_ = value;
             RaisePropertyChanged("SubjectDistance");
+            var speaker = new SpeechSynthesizer();
          }
       }
 
