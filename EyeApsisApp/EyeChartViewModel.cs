@@ -122,9 +122,12 @@ namespace EyeApsisApp
       private void updateAllChartLines(object sender, ElapsedEventArgs e)
       {
          updateAllChartLines();
-         vertAdustTimer.Elapsed -= verticalAdjustmentDelayMethod;
-         vertAdustTimer.Dispose();
-         vertAdustTimer = null;
+         if (null != vertAdustTimer)
+         {
+            vertAdustTimer.Elapsed -= verticalAdjustmentDelayMethod;
+            vertAdustTimer.Dispose();
+            vertAdustTimer = null;
+         }
       }
       
       private bool inCalibrationMode_;
