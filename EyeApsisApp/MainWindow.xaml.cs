@@ -38,7 +38,7 @@ namespace EyeApsisApp
          var grd = splashScreen.MainGrid;
          var rtb = grd.Children[0];
          splashScreen.Show();
-         ST.Thread.Sleep(10000);
+         ST.Thread.Sleep(40000);
          splashScreen.Hide();
       }
 
