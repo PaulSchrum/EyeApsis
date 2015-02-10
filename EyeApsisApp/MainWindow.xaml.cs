@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ST=System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
@@ -18,15 +19,27 @@ namespace EyeApsisApp
 {
    /// <summary>
    /// Interaction logic for MainWindow.xaml
+   /// MainWindow is no longer shown in the app.
+   /// Effective 2/9/2015
+   /// In favor of other windows which are intended for market.
+   /// I am keeping the code as a matter of convenience
    /// </summary>
    public partial class MainWindow : Window
    {
+      SplashScreen splashScreen;
+
       EyeChartWindow chartWindow;
       public MainWindow()
       {
          InitializeComponent();
          chartWindow = new EyeChartWindow();
          chartWindow.mainWindow = this;
+         splashScreen = new SplashScreen();
+         var grd = splashScreen.MainGrid;
+         var rtb = grd.Children[0];
+         splashScreen.Show();
+         ST.Thread.Sleep(10000);
+         splashScreen.Hide();
       }
 
       protected bool IsSingleScreen
