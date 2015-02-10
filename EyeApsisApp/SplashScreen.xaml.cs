@@ -22,6 +22,7 @@ namespace EyeApsisApp
       public SplashScreen()
       {
          InitializeComponent();
+         btn_splashAgreeProceed.Focus();
       }
 
       private void btn_splashExit_Click(object sender, RoutedEventArgs e)
