@@ -1,6 +1,7 @@
 ﻿<Window x:Name="SplashScreen1" x:Class="EyeApsisApp.SplashScreen"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:properties="clr-namespace:EyeApsisApp.Properties"
         Title="SplashScreen" Height="460" Width="620" ScrollViewer.VerticalScrollBarVisibility="Disabled" WindowStyle="None" WindowStartupLocation="CenterScreen" Focusable="False" IsHitTestVisible="True" IsTabStop="False" ResizeMode="NoResize">
    <Window.Background>
       <RadialGradientBrush Center="0.2,0.2" RadiusX="0.7" RadiusY="0.7">
@@ -48,7 +49,7 @@
          </Label.Foreground>
       </Label>
       <Label x:Name="lbl_PrediagnosticVisionAssessment"
-             Content="Prediagnostic Vision Assessment Software" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="2,2,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="24" Grid.ColumnSpan="3" Grid.RowSpan="1" FontStyle="Italic"/>
+             Content="{x:Static properties:Resources.Splash_Subtitle}" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="2,2,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="24" Grid.ColumnSpan="3" Grid.RowSpan="1" FontStyle="Italic"/>
       <TextBlock Grid.Column="1" Grid.ColumnSpan="2"
          HorizontalAlignment="Left" Margin="2,2,0,0"
          Grid.Row="2" TextWrapping="Wrap"

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EyeApsisApp.Resources {
+namespace EyeApsisApp.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace EyeApsisApp.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("EyeApsisApp.Resources.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("EyeApsisApp.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,24 @@ namespace EyeApsisApp.Resources {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EyeApsis.
+        /// </summary>
+        public static string EyeApsis {
+            get {
+                return ResourceManager.GetString("EyeApsis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prediagnostic Vision Assessment Software.
+        /// </summary>
+        public static string Splash_Subtitle {
+            get {
+                return ResourceManager.GetString("Splash_Subtitle", resourceCulture);
             }
         }
     }
