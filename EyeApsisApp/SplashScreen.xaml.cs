@@ -23,5 +23,15 @@ namespace EyeApsisApp
       {
          InitializeComponent();
       }
+
+      private void btn_splashExit_Click(object sender, RoutedEventArgs e)
+      {
+         Application.Current.Shutdown();
+      }
+
+      private void btn_splashAgreeProceed_Click(object sender, RoutedEventArgs e)
+      {
+         Application.Current.Shutdown();
+      }
    }
 }

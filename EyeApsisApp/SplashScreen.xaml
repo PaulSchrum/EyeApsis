@@ -1,7 +1,7 @@
 ﻿<Window x:Name="SplashScreen1" x:Class="EyeApsisApp.SplashScreen"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="SplashScreen" Height="424" Width="620" ScrollViewer.VerticalScrollBarVisibility="Disabled" WindowStyle="None" WindowStartupLocation="CenterScreen" Focusable="False" IsHitTestVisible="False" IsTabStop="False" ResizeMode="NoResize">
+        Title="SplashScreen" Height="460" Width="620" ScrollViewer.VerticalScrollBarVisibility="Disabled" WindowStyle="None" WindowStartupLocation="CenterScreen" Focusable="False" IsHitTestVisible="True" IsTabStop="False" ResizeMode="NoResize">
    <Window.Background>
       <RadialGradientBrush Center="0.2,0.2" RadiusX="0.7" RadiusY="0.7">
          <GradientStop Color="#FF87A8CE" Offset="0"/>
@@ -48,14 +48,16 @@
          </Label.Foreground>
       </Label>
       <Label x:Name="lbl_PrediagnosticVisionAssessment"
-             Content="Prediagnostic Vision Assessment Software" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="2,2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="382" FontSize="20" Grid.ColumnSpan="3" Grid.RowSpan="1" FontStyle="Italic">
-
-      </Label>
+             Content="Prediagnostic Vision Assessment Software" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="2,2,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="24" Grid.ColumnSpan="3" Grid.RowSpan="1" FontStyle="Italic"/>
       <TextBlock Grid.Column="1" Grid.ColumnSpan="2"
          HorizontalAlignment="Left" Margin="2,2,0,0"
          Grid.Row="2" TextWrapping="Wrap"
-         Text="EyeApsis is intended only to test vision for the purposes of making prediagnostic assessments.  Eyeapsis is not certified for diagnosis of vision problems or diseases of the eye and should not be used for these purposes.  By clicking the the Agree and Proceed button below, I agree to these terms and agree not to hold Terragrammetry, Inc. responsible for any liability associated with the use of EyeApsis." 
-         VerticalAlignment="Top" FontSize="20"/>
+         Text="EyeApsis is intended only to test vision for the purposes of making prediagnostic assessments of a subject's vision.  Eyeapsis is not certified for actual diagnosis of vision problems or diseases of the eye and should not be used for these purposes.  By clicking the the Agree and Proceed button below, you agree to these terms and you release Terragrammetry, Inc. from any and all liability associated with the use of EyeApsis.  Vision tests made with EyeApsis which indicate possible vision problems should be followed up promptly with a visit to an eye health care professional." 
+         VerticalAlignment="Top" FontSize="18" Foreground="#FF3C0202"/>
+      <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+         <Button x:Name="btn_splashExit" Margin="0,0,24,0" Click="btn_splashExit_Click" >Exit without Agreeing</Button>
+         <Button x:Name="btn_splashAgreeProceed" Margin="24,0,0,0" Click="btn_splashAgreeProceed_Click" >I agree to these terms. Proceed.</Button>
+      </StackPanel>
 
    </Grid>
 </Window>

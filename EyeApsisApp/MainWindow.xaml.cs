@@ -34,12 +34,18 @@ namespace EyeApsisApp
          InitializeComponent();
          chartWindow = new EyeChartWindow();
          chartWindow.mainWindow = this;
+         this.disableWindow();
          splashScreen = new SplashScreen();
-         var grd = splashScreen.MainGrid;
-         var rtb = grd.Children[0];
          splashScreen.Show();
-         ST.Thread.Sleep(40000);
-         splashScreen.Hide();
+      }
+
+      private void disableWindow()
+      {
+         Width = 0;
+         Height = 0;
+         WindowStyle = WindowStyle.None;
+         ShowInTaskbar = false;
+         ShowActivated = false;
       }
 
       protected bool IsSingleScreen
@@ -81,10 +87,8 @@ namespace EyeApsisApp
             this.Topmost = true;
          }
 
-         chartWindow.Show();
-         chartWindow.WindowState = System.Windows.WindowState.Maximized;
-         this.Show();
-         this.BringIntoView();
+         //chartWindow.Show();
+         //chartWindow.WindowState = System.Windows.WindowState.Maximized;
          
       }
 
