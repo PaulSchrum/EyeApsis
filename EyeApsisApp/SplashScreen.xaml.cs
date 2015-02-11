@@ -19,9 +19,12 @@ namespace EyeApsisApp
    /// </summary>
    public partial class SplashScreen : Window
    {
+      App thisApp;
+
       public SplashScreen()
       {
          InitializeComponent();
+         thisApp = (App)Application.Current;
          btn_splashAgreeProceed.Focus();
       }
 
@@ -32,7 +35,8 @@ namespace EyeApsisApp
 
       private void btn_splashAgreeProceed_Click(object sender, RoutedEventArgs e)
       {
-         Application.Current.Shutdown();
+         this.Hide();
+         thisApp.Step2_UserAgreesSoOpenCalibrationWindow();
       }
    }
 }
