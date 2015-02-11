@@ -58,7 +58,7 @@ namespace EyeApsisApp
          }
          set { }
       }
-      public void openChartWindowOnTheRightScreen()
+      public void openChartWindowOnTheCorrectScreen()
       {
          EyeChartViewModel vm = (((Grid)this.Content).DataContext) as EyeChartViewModel;
          ((Grid)chartWindow.Content).DataContext = ((Grid)this.Content).DataContext;
@@ -100,7 +100,7 @@ namespace EyeApsisApp
 
       private void ControlWindow_ContentRendered(object sender, EventArgs e)
       {
-         openChartWindowOnTheRightScreen();
+         openChartWindowOnTheCorrectScreen();
       }
 
       private void ControlWindow_KeyUp(object sender, KeyEventArgs e)
