@@ -70,6 +70,33 @@ namespace EyeApsisApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to EyeApsis is intended only to test vision for the purposes of making prediagnostic assessments of a subject&apos;s vision.  Eyeapsis is not certified for actual diagnosis of vision problems or diseases of the eye and should not be used for these purposes.  By clicking the the Agree and Proceed button below, you agree to these terms and you release Terragrammetry, Inc. from any and all liability associated with the use of EyeApsis.  Vision tests made with EyeApsis which indicate possible vision problems should be  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Splash_Disclaimer {
+            get {
+                return ResourceManager.GetString("Splash_Disclaimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit Without Agreeing.
+        /// </summary>
+        public static string Splash_ExitWithoutAgreeing {
+            get {
+                return ResourceManager.GetString("Splash_ExitWithoutAgreeing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I agree to these terms. Proceed..
+        /// </summary>
+        public static string Splash_IAgreeProceed {
+            get {
+                return ResourceManager.GetString("Splash_IAgreeProceed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Prediagnostic Vision Assessment Software.
         /// </summary>
         public static string Splash_Subtitle {

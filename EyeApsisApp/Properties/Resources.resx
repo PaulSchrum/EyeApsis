@@ -121,6 +121,18 @@
     <value>EyeApsis</value>
     <comment>Translate Phonetically</comment>
   </data>
+  <data name="Splash_Disclaimer" xml:space="preserve">
+    <value>EyeApsis is intended only to test vision for the purposes of making prediagnostic assessments of a subject's vision.  Eyeapsis is not certified for actual diagnosis of vision problems or diseases of the eye and should not be used for these purposes.  By clicking the the Agree and Proceed button below, you agree to these terms and you release Terragrammetry, Inc. from any and all liability associated with the use of EyeApsis.  Vision tests made with EyeApsis which indicate possible vision problems should be followed up promptly with a visit to an eye health care professional.</value>
+    <comment>EyeApsis is intended only to test vision for the purposes of making prediagnostic assessments of a subject's vision.  Eyeapsis is not certified for actual diagnosis of vision problems or diseases of the eye and should not be used for these purposes.  By clicking the the Agree and Proceed button below, you agree to these terms and you release Terragrammetry, Inc. from any and all liability associated with the use of EyeApsis.  Vision tests made with EyeApsis which indicate possible vision problems should be followed up promptly with a visit to an eye health care professional.</comment>
+  </data>
+  <data name="Splash_ExitWithoutAgreeing" xml:space="preserve">
+    <value>Exit Without Agreeing</value>
+    <comment>Exit Without Agreeing</comment>
+  </data>
+  <data name="Splash_IAgreeProceed" xml:space="preserve">
+    <value>I agree to these terms. Proceed.</value>
+    <comment>I agree to these terms. Proceed.</comment>
+  </data>
   <data name="Splash_Subtitle" xml:space="preserve">
     <value>Prediagnostic Vision Assessment Software</value>
     <comment>Prediagnostic Vision Assessment Software</comment>
