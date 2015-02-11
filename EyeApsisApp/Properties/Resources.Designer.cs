@@ -61,11 +61,92 @@ namespace EyeApsisApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Accept Calibration and Begin Testing.
+        /// </summary>
+        public static string Calibrate_AcceptProceed {
+            get {
+                return ResourceManager.GetString("Calibrate_AcceptProceed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usually this only has to be done at first use or when switching to a different screen for the vision chart..
+        /// </summary>
+        public static string Calibrate_footerExplanation {
+            get {
+                return ResourceManager.GetString("Calibrate_footerExplanation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the Screen Adjustment Factor until the thick vertical line is exactly 3 inches tall..
+        /// </summary>
+        public static string Calibrate_Instructions_Imperial {
+            get {
+                return ResourceManager.GetString("Calibrate_Instructions_Imperial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the Screen Adjustment Factor until the thick vertical line is exactly 8 centimeters tall..
+        /// </summary>
+        public static string Calibrate_Instructions_Metric {
+            get {
+                return ResourceManager.GetString("Calibrate_Instructions_Metric", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can use the mouse wheel to change Adjustment Factor values more easily..
+        /// </summary>
+        public static string Calibrate_popUseMouseWheel {
+            get {
+                return ResourceManager.GetString("Calibrate_popUseMouseWheel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Screen Adjustment Factor:.
+        /// </summary>
+        public static string Calibrate_ScreenAdjustmentFactor {
+            get {
+                return ResourceManager.GetString("Calibrate_ScreenAdjustmentFactor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calibrate: Tell EyeApsis How to Measure the Screen.
+        /// </summary>
+        public static string Calibrate_WindowTitle {
+            get {
+                return ResourceManager.GetString("Calibrate_WindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit EyeAspsis.
+        /// </summary>
+        public static string ExitEyeApsis {
+            get {
+                return ResourceManager.GetString("ExitEyeApsis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to EyeApsis.
         /// </summary>
         public static string EyeApsis {
             get {
                 return ResourceManager.GetString("EyeApsis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset to 1.0.
+        /// </summary>
+        public static string Reset_to_1 {
+            get {
+                return ResourceManager.GetString("Reset_to_1", resourceCulture);
             }
         }
         
@@ -102,6 +183,24 @@ namespace EyeApsisApp.Properties {
         public static string Splash_Subtitle {
             get {
                 return ResourceManager.GetString("Splash_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch to Centimeters.
+        /// </summary>
+        public static string Switch_to_Centimeters {
+            get {
+                return ResourceManager.GetString("Switch_to_Centimeters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch to Inches.
+        /// </summary>
+        public static string Switch_to_Inches {
+            get {
+                return ResourceManager.GetString("Switch_to_Inches", resourceCulture);
             }
         }
     }

@@ -16,17 +16,20 @@ namespace EyeApsisApp
    {
       public EyeChartViewModel chartVM { get; private set; }
       public EyeChartWindow chartWindow { get; private set; }
+      public CalibrateScreenSizeWindow calibrateScreenSizeWindow { get; private set; }
 
       public void Step2_UserAgreesSoOpenCalibrationWindow()
       {
          chartVM = new EyeChartViewModel();
          chartWindow = new EyeChartWindow();
+         calibrateScreenSizeWindow = new CalibrateScreenSizeWindow();
          openChartWindowOnTheCorrectScreen();
       }
 
       public void openChartWindowOnTheCorrectScreen()
       {
          ((Grid)chartWindow.Content).DataContext = chartVM;
+         calibrateScreenSizeWindow.Show();
       //   chartWindow.DataContext = this.DataContext;
       //   chartVM.VerticalCalibration.AdjustmentMultiplier =
       //      Convert.ToDouble(Properties.Settings.Default.VerticalAdjustmentFactor);

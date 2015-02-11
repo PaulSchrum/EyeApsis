@@ -117,9 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Calibrate_AcceptProceed" xml:space="preserve">
+    <value>Accept Calibration and Begin Testing</value>
+    <comment>Accept Calibration and Begin Testing</comment>
+  </data>
+  <data name="Calibrate_footerExplanation" xml:space="preserve">
+    <value>Usually this only has to be done at first use or when switching to a different screen for the vision chart.</value>
+    <comment>Usually this only has to be done at first use or when switching to a different screen for the vision chart.</comment>
+  </data>
+  <data name="Calibrate_Instructions_Imperial" xml:space="preserve">
+    <value>Change the Screen Adjustment Factor until the thick vertical line is exactly 3 inches tall.</value>
+    <comment>Change the Screen Adjustment Factor until the thick vertical line is exactly 3 inches tall.</comment>
+  </data>
+  <data name="Calibrate_Instructions_Metric" xml:space="preserve">
+    <value>Change the Screen Adjustment Factor until the thick vertical line is exactly 8 centimeters tall.</value>
+    <comment>Change the Screen Adjustment Factor until the thick vertical line is exactly 8 centimeters tall.</comment>
+  </data>
+  <data name="Calibrate_ScreenAdjustmentFactor" xml:space="preserve">
+    <value>Screen Adjustment Factor:</value>
+    <comment>Screen Adjustment Factor:</comment>
+  </data>
+  <data name="Calibrate_WindowTitle" xml:space="preserve">
+    <value>Calibrate: Tell EyeApsis How to Measure the Screen</value>
+    <comment>Calibrate: Tell EyeApsis How to Measure the Screen</comment>
+  </data>
+  <data name="ExitEyeApsis" xml:space="preserve">
+    <value>Exit EyeAspsis</value>
+    <comment>Exit EyeAspsis</comment>
+  </data>
   <data name="EyeApsis" xml:space="preserve">
     <value>EyeApsis</value>
     <comment>Translate Phonetically</comment>
+  </data>
+  <data name="Reset_to_1" xml:space="preserve">
+    <value>Reset to 1.0</value>
+    <comment>Reset to 1.0</comment>
   </data>
   <data name="Splash_Disclaimer" xml:space="preserve">
     <value>EyeApsis is intended only to test vision for the purposes of making prediagnostic assessments of a subject's vision.  Eyeapsis is not certified for actual diagnosis of vision problems or diseases of the eye and should not be used for these purposes.  By clicking the the Agree and Proceed button below, you agree to these terms and you release Terragrammetry, Inc. from any and all liability associated with the use of EyeApsis.  Vision tests made with EyeApsis which indicate possible vision problems should be followed up promptly with a visit to an eye health care professional.</value>
@@ -136,5 +168,17 @@
   <data name="Splash_Subtitle" xml:space="preserve">
     <value>Prediagnostic Vision Assessment Software</value>
     <comment>Prediagnostic Vision Assessment Software</comment>
+  </data>
+  <data name="Calibrate_popUseMouseWheel" xml:space="preserve">
+    <value>You can use the mouse wheel to change Adjustment Factor values more easily.</value>
+    <comment>You can use the mouse wheel to change Adjustment Factor values more easily.</comment>
+  </data>
+  <data name="Switch_to_Centimeters" xml:space="preserve">
+    <value>Switch to Centimeters</value>
+    <comment>Switch to Centimeters</comment>
+  </data>
+  <data name="Switch_to_Inches" xml:space="preserve">
+    <value>Switch to Inches</value>
+    <comment>Switch to Inches</comment>
   </data>
 </root>
