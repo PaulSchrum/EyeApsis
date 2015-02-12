@@ -3,6 +3,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:properties="clr-namespace:EyeApsisApp.Properties"
+        xmlns:local="clr-namespace:EyeApsisApp"
         Title="{x:Static properties:Resources.Calibrate_WindowTitle}" Height="500" Width="740" FontSize="30">
    <Window.Background>
       <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -20,12 +21,15 @@
    </Window.Background>
 
    <Grid Margin="24,12">
+      <Grid.DataContext>
+         <local:EyeChartViewModel/>
+      </Grid.DataContext>
       <Grid.RowDefinitions>
          <RowDefinition Height="3*"/>
-         <RowDefinition Height="4*"/>
+         <RowDefinition Height="5*"/>
          <RowDefinition Height="2*"/>
          <RowDefinition Height="2*"/>
-         <RowDefinition Height="3*"/>
+         <RowDefinition Height="2*"/>
       </Grid.RowDefinitions>
 
       <TextBlock x:Name="txt_instructions" Grid.Row="0" Text="{x:Static properties:Resources.Calibrate_Instructions_Imperial}"  HorizontalAlignment="Left" ScrollViewer.VerticalScrollBarVisibility="Disabled" TextWrapping="WrapWithOverflow"></TextBlock>
@@ -35,7 +39,10 @@
          HorizontalAlignment="Center" VerticalAlignment="Center"  >
          <Label Content="{x:Static properties:Resources.Calibrate_ScreenAdjustmentFactor}"
                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
-         <TextBox Margin="24,0,0,0" MinWidth="96" HorizontalContentAlignment="Center"></TextBox>
+         <TextBox Margin="24,0,0,0" MinWidth="96"
+                  Text="{Binding VerticalCalibration.AdjustmentMultiplier, 
+                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  HorizontalContentAlignment="Center"></TextBox>
       </StackPanel>
       
 
