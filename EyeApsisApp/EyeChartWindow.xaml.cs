@@ -43,13 +43,13 @@ namespace EyeApsisApp
             thisWindowShouldBeTopmost_ = value;
             if (true == thisWindowShouldBeTopmost_)
             {
-               this.mainWindow.Topmost = false;
+               //this.mainWindow.Topmost = false;
                this.Topmost = true;
             }
             else
             {
                this.Topmost = false;
-               this.mainWindow.Topmost = true;
+               //this.mainWindow.Topmost = true;
             }
          }
       }

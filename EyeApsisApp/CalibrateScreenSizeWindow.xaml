@@ -20,7 +20,7 @@
       </LinearGradientBrush>
    </Window.Background>
 
-   <Grid Margin="24,12">
+   <Grid x:Name="grd_mainGrid" Margin="24,12">
       <Grid.DataContext>
          <local:EyeChartViewModel/>
       </Grid.DataContext>
@@ -39,10 +39,10 @@
          HorizontalAlignment="Center" VerticalAlignment="Center"  >
          <Label Content="{x:Static properties:Resources.Calibrate_ScreenAdjustmentFactor}"
                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
-         <TextBox Margin="24,0,0,0" MinWidth="96"
+         <TextBox x:Name="ScreenAdjustmentFactor" Margin="24,0,0,0" MinWidth="96"
                   Text="{Binding VerticalCalibration.AdjustmentMultiplier, 
                                 Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  HorizontalContentAlignment="Center"></TextBox>
+                  HorizontalContentAlignment="Center" TextChanged="ScreenAdjustmentFactor_TextChanged"></TextBox>
       </StackPanel>
       
 
@@ -53,8 +53,9 @@
          <Button Content="{x:Static properties:Resources.Switch_to_Centimeters}"
                  Padding="12,4" Margin="24,0" FontSize="20"
                  ></Button>
-         <Button Content="{x:Static properties:Resources.Reset_to_1}"
-                 Padding="12,4" Margin="24,0" FontSize="20"
+         <Button x:Name="btn_resetTo1"
+            Content="{x:Static properties:Resources.Reset_to_1}"
+                 Padding="12,4" Margin="24,0" FontSize="20" Click="btn_resetTo1_Click"
                  ></Button>
          <Button Content="{x:Static properties:Resources.ExitEyeApsis}"
                  Padding="12,4" Margin="24,0" FontSize="20"

@@ -23,5 +23,16 @@ namespace EyeApsisApp
       {
          InitializeComponent();
       }
+
+      private void ScreenAdjustmentFactor_TextChanged(object sender, TextChangedEventArgs e)
+      {
+
+      }
+
+      private void btn_resetTo1_Click(object sender, RoutedEventArgs e)
+      {
+         var viewModel = this.grd_mainGrid.DataContext as EyeChartViewModel;
+         viewModel.VerticalCalibration.AdjustmentMultiplier = 1.0;
+      }
    }
 }

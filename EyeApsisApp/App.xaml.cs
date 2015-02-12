@@ -32,7 +32,7 @@ namespace EyeApsisApp
          ((Grid)calibrateScreenSizeWindow.Content).DataContext = chartVM;
          calibrateScreenSizeWindow.Show();
          chartWindow.DataContext = chartVM;
-         chartVM.VerticalCalibration.AdjustmentMultiplier = 1.0;
+         chartVM.VerticalCalibration.AdjustmentMultiplier = 0.65;
          
          //chartVM.VerticalCalibration.AdjustmentMultiplier =
          //   Convert.ToDouble(Properties.Settings.Default.VerticalAdjustmentFactor);
