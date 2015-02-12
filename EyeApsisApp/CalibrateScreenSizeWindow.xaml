@@ -4,7 +4,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:properties="clr-namespace:EyeApsisApp.Properties"
         xmlns:local="clr-namespace:EyeApsisApp"
-        Title="{x:Static properties:Resources.Calibrate_WindowTitle}" Height="500" Width="740" FontSize="30">
+        Title="{x:Static properties:Resources.Calibrate_WindowTitle}"
+        
+        Height="500" Width="740" FontSize="30" Closed="calibrateScreenSize_Closed">
    <Window.Background>
       <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
          <LinearGradientBrush.RelativeTransform>
@@ -35,30 +37,46 @@
       <TextBlock x:Name="txt_instructions" Grid.Row="0" Text="{x:Static properties:Resources.Calibrate_Instructions_Imperial}"  HorizontalAlignment="Left" ScrollViewer.VerticalScrollBarVisibility="Disabled" TextWrapping="WrapWithOverflow"></TextBlock>
 
       <StackPanel Orientation="Horizontal" Grid.Row="1" 
+                  KeyboardNavigation.IsTabStop="False"
                   ToolTip="{x:Static properties:Resources.Calibrate_popUseMouseWheel}"
          HorizontalAlignment="Center" VerticalAlignment="Center"  >
          <Label Content="{x:Static properties:Resources.Calibrate_ScreenAdjustmentFactor}"
-                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
-         <TextBox x:Name="ScreenAdjustmentFactor" Margin="24,0,0,0" MinWidth="96"
+                KeyboardNavigation.IsTabStop="False"
+                HorizontalContentAlignment="Center" 
+                VerticalContentAlignment="Center"></Label>
+         <TextBox x:Name="ScreenAdjustmentFactor" 
+                  Margin="24,0,0,0" MinWidth="96" 
                   Text="{Binding VerticalCalibration.AdjustmentMultiplier, 
                                 Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  HorizontalContentAlignment="Center" TextChanged="ScreenAdjustmentFactor_TextChanged"></TextBox>
+                  KeyboardNavigation.TabIndex="4"
+                  HorizontalContentAlignment="Center" 
+                  TextChanged="ScreenAdjustmentFactor_TextChanged" GotKeyboardFocus="ScreenAdjustmentFactor_GotKeyboardFocus"
+                  
+                  ></TextBox>
       </StackPanel>
       
 
-      <Button Grid.Row="2" Content="{x:Static properties:Resources.Calibrate_AcceptProceed}" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="12,4"></Button>
+      <Button x:Name="btn_AcceptProceed" Grid.Row="2" Content="{x:Static properties:Resources.Calibrate_AcceptProceed}" HorizontalAlignment="Center" VerticalAlignment="Center" 
+              KeyboardNavigation.TabIndex="0"
+              Padding="12,4"></Button>
       
       <StackPanel Grid.Row="3" Orientation="Horizontal"
                   VerticalAlignment="Center" HorizontalAlignment="Center">
          <Button Content="{x:Static properties:Resources.Switch_to_Centimeters}"
                  Padding="12,4" Margin="24,0" FontSize="20"
+                 KeyboardNavigation.TabIndex="1"
                  ></Button>
          <Button x:Name="btn_resetTo1"
             Content="{x:Static properties:Resources.Reset_to_1}"
                  Padding="12,4" Margin="24,0" FontSize="20" Click="btn_resetTo1_Click"
+                 KeyboardNavigation.TabIndex="2"
                  ></Button>
-         <Button Content="{x:Static properties:Resources.ExitEyeApsis}"
-                 Padding="12,4" Margin="24,0" FontSize="20"
+         <Button x:Name="btn_ExitEyeApsis"
+            Content="{x:Static properties:Resources.ExitEyeApsis}"
+                 
+                 Padding="12,4" Margin="24,0" FontSize="20"              
+                 KeyboardNavigation.TabIndex="3"
+                 Click="btn_ExitEyeApsis_Click"
                  ></Button>
       </StackPanel>
 

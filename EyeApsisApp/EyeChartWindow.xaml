@@ -4,8 +4,8 @@
         xmlns:local="clr-namespace:EyeApsisApp" 
         x:Name="ChartWindow" x:Class="EyeApsisApp.EyeChartWindow"
         Title="Eye Chart Window" WindowStartupLocation="Manual"
-        Height="300" Width="300" WindowStyle="None" Topmost="True"
-        AllowsTransparency="True" KeyUp="ChartWindow_KeyUp" MouseMove="ChartWindow_MouseMove"  >
+        Height="300" Width="300" WindowStyle="None" Topmost="True" 
+        AllowsTransparency="True" KeyUp="ChartWindow_KeyUp" MouseMove="ChartWindow_MouseMove" IsHitTestVisible="False" IsTabStop="False" ShowInTaskbar="False" >
     <Window.Resources>
         <local:ColorToSolidColorBrushValueConverter  x:Key="ColorToSolidColorBrush_ValueConverter"/>
     </Window.Resources>

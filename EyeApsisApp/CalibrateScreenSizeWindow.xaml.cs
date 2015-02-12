@@ -19,9 +19,11 @@ namespace EyeApsisApp
    /// </summary>
    public partial class CalibrateScreenSizeWindow : Window
    {
+      private App thisApp { get; set; }
       public CalibrateScreenSizeWindow()
       {
          InitializeComponent();
+         thisApp = (App)Application.Current;
       }
 
       private void ScreenAdjustmentFactor_TextChanged(object sender, TextChangedEventArgs e)
@@ -34,5 +36,29 @@ namespace EyeApsisApp
          var viewModel = this.grd_mainGrid.DataContext as EyeChartViewModel;
          viewModel.VerticalCalibration.AdjustmentMultiplier = 1.0;
       }
+
+      private void btn_ExitEyeApsis_Click(object sender, RoutedEventArgs e)
+      {
+         thisApp.Shutdown();
+      }
+
+      private void calibrateScreenSize_Closed(object sender, EventArgs e)
+      {
+         thisApp.Shutdown();
+      }
+
+      private void ScreenAdjustmentFactor_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+      {
+         if (!(sender is TextBox)) return;
+
+         TextBox thisTextBox = (TextBox)sender;
+         selectAllText(thisTextBox);
+      }
+
+      private void selectAllText(TextBox aTextBox)
+      {
+         aTextBox.SelectAll();
+      }
+
    }
 }

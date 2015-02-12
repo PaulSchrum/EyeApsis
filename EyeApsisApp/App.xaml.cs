@@ -60,6 +60,8 @@ namespace EyeApsisApp
 
          chartWindow.Show();
          chartWindow.WindowState = System.Windows.WindowState.Maximized;
+         calibrateScreenSizeWindow.Focus();
+         calibrateScreenSizeWindow.btn_AcceptProceed.Focus();
       }
 
       protected bool IsSingleScreen
