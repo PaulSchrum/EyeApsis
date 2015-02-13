@@ -65,9 +65,10 @@
 
         <Rectangle 
             Opacity="{Binding CalibrationBarOpacity}"
-            Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Width="24" 
+            Grid.Column="3" Grid.Row="0" Grid.RowSpan="3" Width="24" 
             Height="{Binding VerticalCalibration.AdjustedLength}" 
-            Fill="Black" VerticalAlignment="Top" HorizontalAlignment="Right"
+            Fill="Black" VerticalAlignment="Top"
+            HorizontalAlignment="Center" Margin="24,0,0,0"
             >
         </Rectangle>
     </Grid>

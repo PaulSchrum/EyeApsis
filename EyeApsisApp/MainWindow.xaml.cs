@@ -63,8 +63,8 @@ namespace EyeApsisApp
          EyeChartViewModel vm = (((Grid)this.Content).DataContext) as EyeChartViewModel;
          ((Grid)chartWindow.Content).DataContext = ((Grid)this.Content).DataContext;
          chartWindow.DataContext = this.DataContext;
-         vm.VerticalCalibration.AdjustmentMultiplier =
-            Convert.ToDouble(Properties.Settings.Default.VerticalAdjustmentFactor);
+         //vm.VerticalCalibration.AdjustmentMultiplier =
+         //   Convert.ToDouble(Properties.Settings.Default.VerticalAdjustmentFactor);
 
          if (this.IsSingleScreen == false)
          {
@@ -114,7 +114,9 @@ namespace EyeApsisApp
          var delta = e.Delta;
          Double adder = 0.01;
          if (delta < 0) adder = -0.01;
-         this.VerticalMultiplierText.Text = ((Convert.ToDouble(this.VerticalMultiplierText.Text)) + adder).ToString();
+         this.VerticalMultiplierText.Text = 
+            ((Convert.ToDouble(this.VerticalMultiplierText.Text)) + adder)
+            .ToString();
       }
 
       private void Expander_Collapsed(object sender, RoutedEventArgs e)
@@ -127,17 +129,17 @@ namespace EyeApsisApp
 
       protected void saveVerticalMultiplier()
       {
-         if (Properties.Settings.Default.VerticalAdjustmentFactor != 
-               this.VerticalMultiplierText.Text)
-         {
+         //if (Properties.Settings.Default.VerticalAdjustmentFactor != 
+         //      this.VerticalMultiplierText.Text)
+         //{
             Double vertAdj = Convert.ToDouble(this.VerticalMultiplierText.Text);
             if (vertAdj > 2.5) vertAdj = 2.5;
             if (vertAdj < 0.2) vertAdj = 0.2;
             String vertAdjStr = String.Format("{0:0.00}", vertAdj);
-            Properties.Settings.Default.VerticalAdjustmentFactor =
-               vertAdjStr;
+            //Properties.Settings.Default.VerticalAdjustmentFactor =
+            //   vertAdjStr;
             Properties.Settings.Default.Save();
-         }
+         //}
       }
 
       private void txt_TextOpacity_MouseWheel(object sender, MouseWheelEventArgs e)

@@ -17,9 +17,11 @@ namespace EyeApsisApp
       public EyeChartViewModel chartVM { get; private set; }
       public EyeChartWindow chartWindow { get; private set; }
       public CalibrateScreenSizeWindow calibrateScreenSizeWindow { get; private set; }
+      public int testingScreenNumber;
 
       public void Step2_UserAgreesSoOpenCalibrationWindow()
       {
+         testingScreenNumber = 2;
          chartVM = new EyeChartViewModel();
          chartWindow = new EyeChartWindow();
          calibrateScreenSizeWindow = new CalibrateScreenSizeWindow();
@@ -28,17 +30,16 @@ namespace EyeApsisApp
 
       public void openChartWindowOnTheCorrectScreen()
       {
+         Calibration calibration = new Calibration();
          ((Grid)chartWindow.Content).DataContext = chartVM;
          ((Grid)calibrateScreenSizeWindow.Content).DataContext = chartVM;
          calibrateScreenSizeWindow.Show();
          chartWindow.DataContext = chartVM;
-         chartVM.VerticalCalibration.AdjustmentMultiplier = 0.65;
-         
-         //chartVM.VerticalCalibration.AdjustmentMultiplier =
-         //   Convert.ToDouble(Properties.Settings.Default.VerticalAdjustmentFactor);
 
          if (this.IsSingleScreen == false)
          {
+            testingScreenNumber = 2;
+            calibration.AdjustmentMultiplier = calibrateScreenSizeWindow.adjFactr_Screen2;
             if (SystemParameters.VirtualScreenLeft < 0.0)
             { // get the window onto the secondary screen (left screen)
                chartWindow.Left = SystemParameters.VirtualScreenLeft + 20;
@@ -53,10 +54,13 @@ namespace EyeApsisApp
          else //single screen, no changes neccessary to window location
          {  // but lets move it a little anyway so it is not on top
             // of the main window
+            testingScreenNumber = 1;
+            calibration.AdjustmentMultiplier = calibrateScreenSizeWindow.adjFactr_Screen1;
             chartWindow.Left = calibrateScreenSizeWindow.Left + 96;
             chartWindow.Topmost = false;
             calibrateScreenSizeWindow.Topmost = true;
          }
+         chartVM.VerticalCalibration = calibration;
 
          chartWindow.Show();
          chartWindow.WindowState = System.Windows.WindowState.Maximized;

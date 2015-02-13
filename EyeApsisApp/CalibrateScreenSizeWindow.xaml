@@ -5,8 +5,8 @@
         xmlns:properties="clr-namespace:EyeApsisApp.Properties"
         xmlns:local="clr-namespace:EyeApsisApp"
         Title="{x:Static properties:Resources.Calibrate_WindowTitle}"
-        
-        Height="500" Width="740" FontSize="30" Closed="calibrateScreenSize_Closed">
+        Left="20"
+        Height="500" Width="740" FontSize="30" Closed="calibrateScreenSize_Closed" SourceInitialized="calibrateScreenSize_SourceInitialized">
    <Window.Background>
       <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
          <LinearGradientBrush.RelativeTransform>
@@ -36,10 +36,12 @@
 
       <TextBlock x:Name="txt_instructions" Grid.Row="0" Text="{x:Static properties:Resources.Calibrate_Instructions_Imperial}"  HorizontalAlignment="Left" ScrollViewer.VerticalScrollBarVisibility="Disabled" TextWrapping="WrapWithOverflow"></TextBlock>
 
-      <StackPanel Orientation="Horizontal" Grid.Row="1" 
+      <StackPanel x:Name="stx_AdjustmentFactor"
+                  Orientation="Horizontal" Grid.Row="1"
+                  
                   KeyboardNavigation.IsTabStop="False"
                   ToolTip="{x:Static properties:Resources.Calibrate_popUseMouseWheel}"
-         HorizontalAlignment="Center" VerticalAlignment="Center"  >
+         HorizontalAlignment="Center" VerticalAlignment="Center" MouseWheel="stx_AdjustmentFactor_MouseWheel"  >
          <Label Content="{x:Static properties:Resources.Calibrate_ScreenAdjustmentFactor}"
                 KeyboardNavigation.IsTabStop="False"
                 HorizontalContentAlignment="Center" 
@@ -56,9 +58,11 @@
       </StackPanel>
       
 
-      <Button x:Name="btn_AcceptProceed" Grid.Row="2" Content="{x:Static properties:Resources.Calibrate_AcceptProceed}" HorizontalAlignment="Center" VerticalAlignment="Center" 
+      <Button x:Name="btn_AcceptProceed" Grid.Row="2" Content="{x:Static properties:Resources.Calibrate_AcceptProceed}" 
+              
+              HorizontalAlignment="Center" VerticalAlignment="Center" 
               KeyboardNavigation.TabIndex="0"
-              Padding="12,4"></Button>
+              Padding="12,4" Click="btn_AcceptProceed_Click"></Button>
       
       <StackPanel Grid.Row="3" Orientation="Horizontal"
                   VerticalAlignment="Center" HorizontalAlignment="Center">

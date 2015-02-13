@@ -106,10 +106,14 @@
                         <TextBox MaxWidth="60" Text="{Binding VerticalCalibration.DesiredLength, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" HorizontalAlignment="Left" Width="36"></TextBox>
                         <Rectangle Width="20"></Rectangle>
                         <TextBlock>Multiplier:</TextBlock>
+                       
                         <TextBox x:Name="VerticalMultiplierText" MaxWidth="60" 
-                            Text="{Binding VerticalCalibration.AdjustmentMultiplier, 
-                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                            Text=
+                            "{Binding VerticalCalibration.AdjustmentMultiplier, 
+                           Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                 
                             HorizontalAlignment="Left" Width="36" MouseWheel="TextBox_MouseWheel_1"></TextBox>
+                    
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Background="Bisque">
                         <TextBlock>Horizontal: Desired Length:</TextBlock>
