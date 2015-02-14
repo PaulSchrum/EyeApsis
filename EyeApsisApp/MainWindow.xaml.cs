@@ -46,6 +46,7 @@ namespace EyeApsisApp
          WindowStyle = WindowStyle.None;
          ShowInTaskbar = false;
          ShowActivated = false;
+         this.Hide();
       }
 
       protected bool IsSingleScreen

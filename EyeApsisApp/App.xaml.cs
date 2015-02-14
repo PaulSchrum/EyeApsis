@@ -18,6 +18,7 @@ namespace EyeApsisApp
       public EyeChartWindow chartWindow { get; private set; }
       public CalibrateScreenSizeWindow calibrateScreenSizeWindow { get; private set; }
       public int testingScreenNumber;
+      public EndUserDashboardWindow dashboardWindow { get; private set; }
 
       public void Step2_UserAgreesSoOpenCalibrationWindow()
       {
@@ -25,10 +26,16 @@ namespace EyeApsisApp
          chartVM = new EyeChartViewModel();
          chartWindow = new EyeChartWindow();
          calibrateScreenSizeWindow = new CalibrateScreenSizeWindow();
+         dashboardWindow = new EndUserDashboardWindow();
          openChartWindowOnTheCorrectScreen();
       }
 
-      public void openChartWindowOnTheCorrectScreen()
+      public void Step3_CalibrationAccepted_OpenDashboard()
+      {
+         dashboardWindow.Show();
+      }
+
+      private void openChartWindowOnTheCorrectScreen()
       {
          Calibration calibration = new Calibration();
          ((Grid)chartWindow.Content).DataContext = chartVM;

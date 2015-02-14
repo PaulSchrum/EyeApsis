@@ -108,13 +108,15 @@ namespace EyeApsisApp
       private void btn_AcceptProceed_Click(object sender, RoutedEventArgs e)
       {
          int adjFactor;
-         var viewModel = this.grd_mainGrid.DataContext as EyeChartViewModel;
-         adjFactor = (int)(viewModel.VerticalCalibration.AdjustmentMultiplier * 100);
+         adjFactor = (int)(thisApp.chartVM.VerticalCalibration.AdjustmentMultiplier * 100);
          if(thisApp.testingScreenNumber == 2)
             Properties.Settings.Default.AdjustmentMultiplier_Screen2 = adjFactor;
          else
             Properties.Settings.Default.AdjustmentMultiplier_Screen1 = adjFactor;
          Properties.Settings.Default.Save();
+
+         this.Hide();
+         thisApp.Step3_CalibrationAccepted_OpenDashboard();
       }
 
    }
