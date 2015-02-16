@@ -36,9 +36,9 @@ namespace EyeApsisApp
          ToggleBackgroundCmd = new RelayCommand(toggleBicolorBackground, () => canToggleBackground);
          ShuffleLettersCmd = new RelayCommand(shuffleLetters, () => canShuffleLetters);
          reshuffleTimer.Elapsed += new ElapsedEventHandler((source, e) => shuffleLetters());
-         ReshuffleInterval = 7;
-         HorizontalCalibration = new Calibration();  // note, we don't actually use this right now.
-         VerticalCalibration = new Calibration();
+         ReshuffleInterval = 0;
+         //HorizontalCalibration = new Calibration(this);  // note, we don't actually use this right now.
+         VerticalCalibration = new Calibration(this);
          InCalibrationMode = true;
          this.VerticalCalibration.notifyAdjustmentMultiplyerChanged += verticalAdjustmentChanged;
          BackgroundGrayScalePercent = 0.0;
@@ -265,7 +265,7 @@ namespace EyeApsisApp
          }
       }
 
-      private void updateAllChartLines()
+      internal void updateAllChartLines()
       {
          if (null != ChartLines)
          {
@@ -483,7 +483,11 @@ namespace EyeApsisApp
       {
          get { return verticalModifier_; }
          set
-         { verticalModifier_ = value; RaisePropertyChanged("VerticalModifier"); }
+         { 
+            verticalModifier_ = value;
+            RaisePropertyChanged("VerticalModifier");
+            RaisePropertyChanged("LetterFontSize");
+         }
       }
 
       public Double LetterFontSize
@@ -577,11 +581,16 @@ namespace EyeApsisApp
 
    public class Calibration : INotifyPropertyChanged
    {
-
+      EyeChartViewModel parentVM { get; set; }
       public Calibration()
       {
          DesiredLength = 3.0;
          AdjustmentMultiplier = 1.0;
+      }
+
+      public Calibration(EyeChartViewModel parent) : this()
+      {
+         parentVM = parent;
       }
 
       private Double desiredLength_;
@@ -607,6 +616,8 @@ namespace EyeApsisApp
             RaisePropertyChanged("AdjustedLength");
             if (null != notifyAdjustmentMultiplyerChanged)
                notifyAdjustmentMultiplyerChanged(null, null);
+            if (this.parentVM != null) 
+               parentVM.updateAllChartLines();
          }
       }
 

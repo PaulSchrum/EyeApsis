@@ -32,12 +32,14 @@ namespace EyeApsisApp
 
       public void Step3_CalibrationAccepted_OpenDashboard()
       {
+         chartVM.InCalibrationMode = false;
          dashboardWindow.Show();
       }
 
       private void openChartWindowOnTheCorrectScreen()
       {
-         Calibration calibration = new Calibration();
+         chartVM.InCalibrationMode = true;
+         Calibration calibration = chartVM.VerticalCalibration;
          ((Grid)chartWindow.Content).DataContext = chartVM;
          ((Grid)calibrateScreenSizeWindow.Content).DataContext = chartVM;
          calibrateScreenSizeWindow.Show();
