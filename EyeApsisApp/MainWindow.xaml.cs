@@ -41,12 +41,12 @@ namespace EyeApsisApp
 
       private void disableWindow()
       {
+         this.Hide();
          Width = 0;
          Height = 0;
          WindowStyle = WindowStyle.None;
          ShowInTaskbar = false;
          ShowActivated = false;
-         this.Hide();
       }
 
       protected bool IsSingleScreen
