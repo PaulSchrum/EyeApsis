@@ -20,6 +20,8 @@
 
       <TabControl Grid.Row="1" Grid.Column="0" 
                   Grid.ColumnSpan="2" TabStripPlacement="Left">
+         <!--See http://stackoverflow.com/questions/7835260/using-tab-and-carriage-return-character-in-a-wpf-resource-dictionary -->
+         <!--  for how to put a newline in xaml like I do here: -->
          <TabItem Header="Visual&#x0d;&#x0a;Acuity">Hi1</TabItem>
          <TabItem Header="Color&#x0d;&#x0a;Sensitivity">Hi2</TabItem>
          <TabItem Header="Contrast&#x0d;&#x0a;Sensitivity">Hi2</TabItem>
