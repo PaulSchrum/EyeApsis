@@ -1,12 +1,29 @@
-﻿<Window x:Name="userControlWindow" x:Class="EyeApsisApp.EndUserDashboardWindow"
+﻿<Window x:Name="EndUserControlDashboard" x:Class="EyeApsisApp.EndUserDashboardWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:properties="clr-namespace:EyeApsisApp.Properties"
         xmlns:local="clr-namespace:EyeApsisApp"
         Title="{x:Static properties:Resources.EyeApsis}" 
-        Height="300" Width="300" 
-        Closed="userControlWindow_Closed">
-    <Grid>
-        
-    </Grid>
+        Height="360" Width="400" 
+        Closed="userControlWindow_Closed" 
+        MinWidth="360" MinHeight="360"
+        >
+    <Grid x:Name="TopLevelGrid">
+      <Grid.ColumnDefinitions>
+         <ColumnDefinition Width="96"/>
+         <ColumnDefinition/>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+         <RowDefinition Height="24"/>
+         <RowDefinition/>
+      </Grid.RowDefinitions>
+
+      <TabControl Grid.Row="1" Grid.Column="0" 
+                  Grid.ColumnSpan="2" TabStripPlacement="Left">
+         <TabItem Header="Visual&#x0d;&#x0a;Acuity">Hi1</TabItem>
+         <TabItem Header="Color&#x0d;&#x0a;Sensitivity">Hi2</TabItem>
+         <TabItem Header="Contrast&#x0d;&#x0a;Sensitivity">Hi2</TabItem>
+      </TabControl>
+
+   </Grid>
 </Window>

@@ -490,9 +490,10 @@ namespace EyeApsisApp
          }
       }
 
+      private Double LetterFontSizeRealityMultiplier = 1.04 * 4 / 3;
       public Double LetterFontSize
       {
-         get { return computeLetterHeightInInches() * 96 * 4 / 3; }
+         get { return computeLetterHeightInInches() * 96 * LetterFontSizeRealityMultiplier; }
          private set { }
       }
 
