@@ -181,4 +181,22 @@
     <value>Switch to Inches</value>
     <comment>Switch to Inches</comment>
   </data>
+  <data name="Dash_ColorSensitivity" xml:space="preserve">
+    <value>Color
+Sensitivity</value>
+    <comment>Color
+Sensitivity</comment>
+  </data>
+  <data name="Dash_ContrastSensitivity" xml:space="preserve">
+    <value>Contrast
+Sensitivity</value>
+    <comment>Contrast
+Sensitivity</comment>
+  </data>
+  <data name="Dash_VisualAcuity" xml:space="preserve">
+    <value>Visual
+Acuity </value>
+    <comment>Visual
+Acuity</comment>
+  </data>
 </root>

@@ -124,6 +124,36 @@ namespace EyeApsisApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Color
+        ///Sensitivity.
+        /// </summary>
+        public static string Dash_ColorSensitivity {
+            get {
+                return ResourceManager.GetString("Dash_ColorSensitivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contrast
+        ///Sensitivity.
+        /// </summary>
+        public static string Dash_ContrastSensitivity {
+            get {
+                return ResourceManager.GetString("Dash_ContrastSensitivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visual
+        ///Acuity .
+        /// </summary>
+        public static string Dash_VisualAcuity {
+            get {
+                return ResourceManager.GetString("Dash_VisualAcuity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exit EyeAspsis.
         /// </summary>
         public static string ExitEyeApsis {

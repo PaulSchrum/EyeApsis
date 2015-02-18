@@ -4,11 +4,11 @@
         xmlns:properties="clr-namespace:EyeApsisApp.Properties"
         xmlns:local="clr-namespace:EyeApsisApp"
         Title="{x:Static properties:Resources.EyeApsis}" 
-        Height="360" Width="400" 
+        Height="440" Width="400" 
         Closed="userControlWindow_Closed" 
         MinWidth="360" MinHeight="360"
         >
-    <Grid x:Name="TopLevelGrid">
+   <Grid x:Name="TopLevelGrid">
       <Grid.ColumnDefinitions>
          <ColumnDefinition Width="96"/>
          <ColumnDefinition/>
@@ -20,11 +20,32 @@
 
       <TabControl Grid.Row="1" Grid.Column="0" 
                   Grid.ColumnSpan="2" TabStripPlacement="Left">
-         <!--See http://stackoverflow.com/questions/7835260/using-tab-and-carriage-return-character-in-a-wpf-resource-dictionary -->
-         <!--  for how to put a newline in xaml like I do here: -->
-         <TabItem Header="Visual&#x0d;&#x0a;Acuity">Hi1</TabItem>
-         <TabItem Header="Color&#x0d;&#x0a;Sensitivity">Hi2</TabItem>
-         <TabItem Header="Contrast&#x0d;&#x0a;Sensitivity">Hi2</TabItem>
+         <TabItem x:Name="tbi_VisualAcuity" Background="#FFE6E796">
+            <TabItem.Header>
+               <TextBlock Text="{x:Static properties:Resources.Dash_VisualAcuity}" 
+                          FontSize="20">
+               </TextBlock>
+            </TabItem.Header>
+
+         </TabItem>
+         <TabItem x:Name="tbi_ColorSensitivity" Background="#FFE6E796">
+            <TabItem.Header>
+               <TextBlock Text="{x:Static properties:Resources.Dash_ColorSensitivity}"
+                          FontSize="20">
+               </TextBlock>
+            </TabItem.Header>
+
+            Hi2
+         </TabItem>
+         <TabItem x:Name="tbi_ConstrastSensitivity" Background="#FFE6E796">
+            <TabItem.Header>
+               <TextBlock Text="{x:Static properties:Resources.Dash_ContrastSensitivity}"
+                          FontSize="20">
+               </TextBlock>
+            </TabItem.Header>
+
+            Hi23
+         </TabItem>
       </TabControl>
 
    </Grid>
