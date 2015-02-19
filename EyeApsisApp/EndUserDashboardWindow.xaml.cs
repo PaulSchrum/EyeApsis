@@ -30,5 +30,10 @@ namespace EyeApsisApp
       {
          thisApp.Shutdown();
       }
+
+      public void InitializeNewTest()
+      {
+         ((DashboardViewModel)this.TopLevelGrid.DataContext).InitializeNewTest();
+      }
    }
 }

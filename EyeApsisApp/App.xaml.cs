@@ -33,6 +33,7 @@ namespace EyeApsisApp
       {
          chartVM.InCalibrationMode = false;
          dashboardWindow = new EndUserDashboardWindow();
+         ((DashboardViewModel)dashboardWindow.TopLevelGrid.DataContext).EyeChartViewModel = chartVM;
          dashboardWindow.Show();
       }
 

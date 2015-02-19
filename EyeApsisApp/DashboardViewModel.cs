@@ -10,8 +10,14 @@ namespace EyeApsisApp
    public class DashboardViewModel : INotifyPropertyChanged
    {
       public VisionTestRecord CurrentTest { get; set; }
+      public EyeChartViewModel EyeChartViewModel { get; set; }
 
       public DashboardViewModel()
+      {
+         InitializeNewTest();
+      }
+
+      internal void InitializeNewTest()
       {
          CurrentTest = new VisionTestRecord();
       }
@@ -24,5 +30,6 @@ namespace EyeApsisApp
             PropertyChanged(this, new PropertyChangedEventArgs(prop));
          }
       }
+
    }
 }
