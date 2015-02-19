@@ -54,10 +54,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CalibrateScreenSizeWindow.xaml.cs">
+    <Compile Include="Views\CalibrateScreenSizeWindow.xaml.cs">
       <DependentUpon>CalibrateScreenSizeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DashboardViewModel.cs" />
+    <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="Properties\Resource.en-US.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -65,18 +65,18 @@
       <DependentUpon>Resource.en-US.resx</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="SplashScreen.xaml.cs">
+    <Compile Include="Views\SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EndUserDashboardWindow.xaml.cs">
+    <Compile Include="Views\EndUserDashboardWindow.xaml.cs">
       <DependentUpon>EndUserDashboardWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VisionTestRecord.cs" />
-    <Page Include="CalibrateScreenSizeWindow.xaml">
+    <Compile Include="Models\VisionTestRecord.cs" />
+    <Page Include="Views\CalibrateScreenSizeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EyeChartWindow.xaml">
+    <Page Include="Views\EyeChartWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -88,19 +88,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="EyeChartViewModel.cs" />
-    <Compile Include="EyeChartWindow.xaml.cs">
+    <Compile Include="ViewModels\EyeChartViewModel.cs" />
+    <Compile Include="Views\EyeChartWindow.xaml.cs">
       <DependentUpon>EyeChartWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="SplashScreen.xaml">
+    <Page Include="Views\SplashScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EndUserDashboardWindow.xaml">
+    <Page Include="Views\EndUserDashboardWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

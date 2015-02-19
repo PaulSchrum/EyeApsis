@@ -56,11 +56,10 @@
                   
                   ></TextBox>
       </StackPanel>
-      
 
-      <Button x:Name="btn_AcceptProceed" Grid.Row="2" Content="{x:Static properties:Resources.Calibrate_AcceptProceed}" 
-              
-              HorizontalAlignment="Center" VerticalAlignment="Center" 
+      <Button x:Name="btn_AcceptProceed" Grid.Row="2" 
+         Content="{x:Static properties:Resources.Calibrate_AcceptProceed}"
+         HorizontalAlignment="Center" VerticalAlignment="Center" 
               KeyboardNavigation.TabIndex="0"
               Padding="12,4" Click="btn_AcceptProceed_Click"></Button>
       
