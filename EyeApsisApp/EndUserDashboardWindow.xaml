@@ -9,6 +9,9 @@
         MinWidth="360" MinHeight="360"
         >
    <Grid x:Name="TopLevelGrid">
+      <Grid.DataContext>
+         <local:DashboardViewModel/>
+      </Grid.DataContext>
       <Grid.ColumnDefinitions>
          <ColumnDefinition Width="96"/>
          <ColumnDefinition/>

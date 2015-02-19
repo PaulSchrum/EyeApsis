@@ -199,4 +199,8 @@ Acuity </value>
     <comment>Visual
 Acuity</comment>
   </data>
+  <data name="DidNotAsk" xml:space="preserve">
+    <value>Did not ask</value>
+    <comment>Did not ask</comment>
+  </data>
 </root>

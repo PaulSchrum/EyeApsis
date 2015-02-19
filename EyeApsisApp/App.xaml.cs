@@ -26,13 +26,13 @@ namespace EyeApsisApp
          chartVM = new EyeChartViewModel();
          chartWindow = new EyeChartWindow();
          calibrateScreenSizeWindow = new CalibrateScreenSizeWindow();
-         dashboardWindow = new EndUserDashboardWindow();
          openChartWindowOnTheCorrectScreen();
       }
 
       public void Step3_CalibrationAccepted_OpenDashboard()
       {
          chartVM.InCalibrationMode = false;
+         dashboardWindow = new EndUserDashboardWindow();
          dashboardWindow.Show();
       }
 

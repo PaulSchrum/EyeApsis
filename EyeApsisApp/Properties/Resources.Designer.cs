@@ -154,6 +154,15 @@ namespace EyeApsisApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Did not ask.
+        /// </summary>
+        public static string DidNotAsk {
+            get {
+                return ResourceManager.GetString("DidNotAsk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exit EyeAspsis.
         /// </summary>
         public static string ExitEyeApsis {
