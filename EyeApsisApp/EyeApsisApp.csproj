@@ -54,6 +54,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\HelperVMs\AcuityTabItem.cs" />
+    <Compile Include="ViewModels\HelperVMs\ColorSensitivityTabItem.cs" />
+    <Compile Include="ViewModels\HelperVMs\ContrastSensitivityTabItem.cs" />
+    <Compile Include="ViewModels\HelperVMs\DashboardTabItem.cs" />
     <Compile Include="Views\CalibrateScreenSizeWindow.xaml.cs">
       <DependentUpon>CalibrateScreenSizeWindow.xaml</DependentUpon>
     </Compile>

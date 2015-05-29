@@ -4,27 +4,30 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EyeApsisApp.ViewModels.HelperVMs;
 
-namespace EyeApsisApp
+namespace EyeApsisApp.ViewModels.HelperVMs
 {
-   public class DashboardViewModel : INotifyPropertyChanged
+   public class DashboardTabItem : INotifyPropertyChanged
    {
-      public VisionTestRecord CurrentTest { get; set; }
-      public EyeChartViewModel EyeChartViewModel { get; set; }
-      public List<DashboardTabItem> TopLevelTabItems { get; set; }
-
-      public DashboardViewModel()
+      public EyeChartViewModel EyeChartVM { get; private set; }
+      public DashboardTabItem()
       {
-         InitializeNewTest();
+         TabItemName = "Base Tab Item";
       }
 
-      internal void InitializeNewTest()
+      private String tabItemName_;
+      public String TabItemName
       {
-         CurrentTest = new VisionTestRecord();
+         get { return tabItemName_; }
+         set
+         {
+            tabItemName_ = value;
+            RaisePropertyChanged("TabItemName");
+         }
       }
 
       public event PropertyChangedEventHandler PropertyChanged;
+
       public void RaisePropertyChanged(String prop)
       {
          if (null != PropertyChanged)
