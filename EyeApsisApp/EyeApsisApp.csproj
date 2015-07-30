@@ -54,6 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Chart\VisualAcuityRow.cs" />
     <Compile Include="ViewModels\HelperVMs\AcuityTabItem.cs" />
     <Compile Include="ViewModels\HelperVMs\ColorSensitivityTabItem.cs" />
     <Compile Include="ViewModels\HelperVMs\ContrastSensitivityTabItem.cs" />

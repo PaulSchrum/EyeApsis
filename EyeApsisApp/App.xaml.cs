@@ -23,8 +23,9 @@ namespace EyeApsisApp
       public void Step2_UserAgreesSoOpenCalibrationWindow()
       {
          testingScreenNumber = 2;
-         chartVM = new EyeChartViewModel();
+         //chartVM = new EyeChartViewModel();
          chartWindow = new EyeChartWindow();
+         chartVM = (EyeChartViewModel) chartWindow.EyeChartTopGrid.DataContext;
          calibrateScreenSizeWindow = new CalibrateScreenSizeWindow();
          openChartWindowOnTheCorrectScreen();
       }
@@ -33,7 +34,8 @@ namespace EyeApsisApp
       {
          chartVM.InCalibrationMode = false;
          dashboardWindow = new EndUserDashboardWindow();
-         ((DashboardViewModel)dashboardWindow.TopLevelGrid.DataContext).EyeChartViewModel = chartVM;
+         DashboardViewModel dshBrdViewModel = (DashboardViewModel)dashboardWindow.TopLevelGrid.DataContext;
+         dshBrdViewModel.EyeChartViewModel = chartVM;
          dashboardWindow.Show();
       }
 

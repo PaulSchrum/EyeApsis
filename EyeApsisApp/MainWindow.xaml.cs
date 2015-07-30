@@ -32,8 +32,8 @@ namespace EyeApsisApp
       public MainWindow()
       {
          InitializeComponent();
-         chartWindow = new EyeChartWindow();
-         chartWindow.mainWindow = this;
+         //chartWindow = new EyeChartWindow();
+         //chartWindow.mainWindow = this;
          this.disableWindow();
          splashScreen = new SplashScreen();
          splashScreen.Show();

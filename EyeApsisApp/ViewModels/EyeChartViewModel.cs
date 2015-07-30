@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Timers;
 using System.Media;
 using System.Speech.Synthesis;
+using EyeApsisApp.Models.Chart;
 
 namespace EyeApsisApp
 {
@@ -23,11 +24,11 @@ namespace EyeApsisApp
          ChartLines = new ObservableCollection<ChartLine>();
          //ChartLines.Add(new ChartLine(initialSnellenDenominator: 100.0));
          ChartLines.Add(new ChartLine(initialSnellenDenominator: 60.0));
-         ChartLines.Add(new ChartLine(initialSnellenDenominator: 40.0));
-         ChartLines.Add(new ChartLine(initialSnellenDenominator: 30.0));
-         ChartLines.Add(new ChartLine(initialSnellenDenominator: 20.0));
-         ChartLines.Add(new ChartLine(initialSnellenDenominator: 15.0));
-         ChartLines.Add(new ChartLine(initialSnellenDenominator: 10.0));
+         //ChartLines.Add(new ChartLine(initialSnellenDenominator: 40.0));
+         //ChartLines.Add(new ChartLine(initialSnellenDenominator: 30.0));
+         //ChartLines.Add(new ChartLine(initialSnellenDenominator: 20.0));
+         //ChartLines.Add(new ChartLine(initialSnellenDenominator: 15.0));
+         //ChartLines.Add(new ChartLine(initialSnellenDenominator: 10.0));
          updateAllChartLines();
          LeftBackgroundBrush = Brushes.White;
          RightBackgroundBrush = Brushes.White;
@@ -65,6 +66,17 @@ namespace EyeApsisApp
       {
          get { return adjustedLeftBackgroundColor_; }
          protected set { adjustedLeftBackgroundColor_ = value; RaisePropertyChanged("AdjustedLeftBackgroundColor"); }
+      }
+
+      internal void SetEyeChartLines(IEnumerable<VisualAcuityRow> VisualAcuityRows)
+      {
+         ChartLines.Clear();
+         foreach (var row in VisualAcuityRows)
+         {
+            ChartLines.Add(
+               new ChartLine(initialSnellenDenominator: row.snellenDenominator));
+         }
+         updateAllChartLines();
       }
 
       protected Color adjustedRightBackgroundColor_;
@@ -199,7 +211,7 @@ namespace EyeApsisApp
          {
             subjectDistance_ = value;
             RaisePropertyChanged("SubjectDistance");
-            var speaker = new SpeechSynthesizer();
+            //var speaker = new SpeechSynthesizer();
          }
       }
 

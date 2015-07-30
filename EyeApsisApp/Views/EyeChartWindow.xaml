@@ -9,7 +9,7 @@
     <Window.Resources>
         <local:ColorToSolidColorBrushValueConverter  x:Key="ColorToSolidColorBrush_ValueConverter"/>
     </Window.Resources>
-    <Grid UseLayoutRounding="True" 
+    <Grid UseLayoutRounding="True" Name="EyeChartTopGrid"
           VerticalAlignment="Center" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>

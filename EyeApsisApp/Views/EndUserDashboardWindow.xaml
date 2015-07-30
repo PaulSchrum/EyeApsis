@@ -13,14 +13,27 @@
          <local:DashboardViewModel/>
       </Grid.DataContext>
       <Grid.ColumnDefinitions>
-         <ColumnDefinition Width="96"/>
-         <ColumnDefinition/>
+         <ColumnDefinition Width="160"/>
+         <ColumnDefinition Width="200"/>
+      <ColumnDefinition/>
       </Grid.ColumnDefinitions>
       <Grid.RowDefinitions>
-         <RowDefinition Height="24"/>
+         <RowDefinition Height="48"/>
+         <RowDefinition Height="172"/>
+         <RowDefinition Height="9*"/>
          <RowDefinition/>
       </Grid.RowDefinitions>
-
+      <Label Grid.Column="0" Grid.Row="0"
+             FontSize="20" HorizontalAlignment="Right"
+             >Subject Distance:</Label>
+      <TextBox Name="txt_subjectDistance"
+         Grid.Column="1" Grid.Row="0"
+         FontSize="20"
+         Text="{Binding SubjectDistance, 
+               Mode=TwoWay, UpdateSourceTrigger=LostFocus}" 
+               GotFocus="txt_subjectDistance_GotFocus"
+         TabIndex="0"
+         ></TextBox>
       <TabControl Grid.Row="1" Grid.Column="0" 
                   Grid.ColumnSpan="2" TabStripPlacement="Left">
          <TabItem x:Name="tbi_VisualAcuity" Background="#FFE6E796">
@@ -50,6 +63,37 @@
             Hi23
          </TabItem>
       </TabControl>
+      
+      <StackPanel Grid.Row="2" 
+                  Grid.Column="0" 
+                  Grid.ColumnSpan="2" 
+                  Orientation="Vertical">
+         <ComboBox></ComboBox>
+         <ListView Name="lbx_VisualAcuity"
+            MinHeight="100" SelectionMode="Single"
+            ScrollViewer.VerticalScrollBarVisibility="Auto"
+            ItemsSource="{Binding AvailableVisualAcuities}"
+            SelectedIndex="{Binding SelectedVisualAcuity}" MaxHeight="100" SelectionChanged="lbx_VisualAcuity_SelectionChanged"
+            >
+            <ListView.ItemTemplate>
+               <DataTemplate>
+                  <Grid>
+                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                     </Grid.ColumnDefinitions>
+                     <TextBlock Text="{Binding Value_}"
+                                Grid.Column="0"
+                                FontSize="20"
+                                ></TextBlock>
+                  </Grid>
+               </DataTemplate>
+            </ListView.ItemTemplate>
+         </ListView>
+         <Button Name="tempButton" 
+                 Click="tempButton_Click" Height="24"
+                 TabIndex="1"
+                 >Button</Button>
+      </StackPanel>
 
-   </Grid>
+    </Grid>
 </Window>
