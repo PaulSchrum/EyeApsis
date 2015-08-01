@@ -56,5 +56,25 @@ namespace EyeApsisApp
          var selection = e.AddedItems.Cast<VisualAcuityRow>();
          this.dataContxt.VisualAcuitySelectionChanged(selection);
       }
+
+      private void TopLevelGrid_MouseWheel(object sender, MouseWheelEventArgs e)
+      {
+         int i = 1;
+         if (e.Delta > 0)
+            i *= -1;
+
+         var newIndex = this.lbx_VisualAcuity.SelectedIndex + i;
+         if (newIndex < 0) newIndex = 0;
+         if (newIndex > lbx_VisualAcuity.Items.Count - 1)
+            newIndex = lbx_VisualAcuity.Items.Count - 1;
+         lbx_VisualAcuity.SelectedIndex = newIndex;
+         lbx_VisualAcuity.ScrollIntoView(lbx_VisualAcuity.SelectedItem);
+      }
+
+      private void lbx_VisualAcuity_Loaded(object sender, RoutedEventArgs e)
+      {
+         lbx_VisualAcuity.SelectedIndex = 7;
+         lbx_VisualAcuity.ScrollIntoView(lbx_VisualAcuity.SelectedItem);
+      }
    }
 }
