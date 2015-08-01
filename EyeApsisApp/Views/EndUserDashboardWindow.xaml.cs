@@ -53,8 +53,11 @@ namespace EyeApsisApp
       private void lbx_VisualAcuity_SelectionChanged(
          object sender, SelectionChangedEventArgs e)
       {
+         var visualAcuitySelection = lbx_VisualAcuity.SelectedIndex;
          var selection = e.AddedItems.Cast<VisualAcuityRow>();
          this.dataContxt.VisualAcuitySelectionChanged(selection);
+         lbx_VisualAcuity.SelectedIndex = visualAcuitySelection;
+         lbx_VisualAcuity.ScrollIntoView(lbx_VisualAcuity.SelectedItem);
       }
 
       private void TopLevelGrid_MouseWheel(object sender, MouseWheelEventArgs e)
@@ -88,5 +91,29 @@ namespace EyeApsisApp
          e.Handled = true;
       }
 
+      private void cbx_visualAcuityState_SelectionChanged(object sender, 
+         SelectionChangedEventArgs e)
+      {
+         if (null == dataContxt) return;
+         dataContxt.VAstateSelectionChanged(e.AddedItems[0] as String);
+      }
+
+      private void TopLevelGrid_KeyDown(object sender, KeyEventArgs e)
+      {
+      }
+
+      private void TopLevelGrid_PreviewKeyDown(object sender, KeyEventArgs e)
+      {
+         switch (e.Key)
+         {
+            case Key.Down: { moveListviewSelction(-1); break; }
+            case Key.Up: { moveListviewSelction(1); break; }
+         }
+      }
+
+      private void EndUserControlDashboard_Loaded(object sender, RoutedEventArgs e)
+      {
+         txt_subjectDistance.Focus();
+      }
    }
 }

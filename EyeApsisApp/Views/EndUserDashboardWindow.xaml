@@ -6,9 +6,13 @@
         Title="{x:Static properties:Resources.EyeApsis}" 
         Height="440" Width="400" 
         Closed="userControlWindow_Closed" 
-        MinWidth="360" MinHeight="360"
+        MinWidth="360" MinHeight="360" Loaded="EndUserControlDashboard_Loaded"
         >
-   <Grid x:Name="TopLevelGrid" MouseWheel="TopLevelGrid_MouseWheel">
+   <Grid x:Name="TopLevelGrid" 
+         MouseWheel="TopLevelGrid_MouseWheel" 
+         PreviewKeyDown="TopLevelGrid_PreviewKeyDown"
+         
+         >
       <Grid.DataContext>
          <local:DashboardViewModel/>
       </Grid.DataContext>
@@ -32,7 +36,7 @@
          Text="{Binding SubjectDistance, 
                Mode=TwoWay, UpdateSourceTrigger=LostFocus}" 
                GotFocus="txt_subjectDistance_GotFocus"
-         TabIndex="0"
+         TabIndex="0" 
          ></TextBox>
       <TabControl Grid.Row="1" Grid.Column="0" 
                   Grid.ColumnSpan="2" TabStripPlacement="Left">
@@ -68,7 +72,12 @@
                   Grid.Column="0" 
                   Grid.ColumnSpan="2" 
                   Orientation="Vertical">
-         <ComboBox></ComboBox>
+         <ComboBox Name="cbx_visualAcuityState" 
+             ItemsSource="{Binding VisualAcuityStates}"
+             SelectionChanged="cbx_visualAcuityState_SelectionChanged" 
+             SelectedIndex="0"
+             >
+         </ComboBox>
          <ListView Name="lbx_VisualAcuity"
             MinHeight="100" SelectionMode="Single"
             ScrollViewer.VerticalScrollBarVisibility="Auto"

@@ -17,13 +17,28 @@ namespace EyeApsisApp
       public List<DashboardTabItem> TopLevelTabItems { get; set; }
       public ObservableCollection<VisualAcuityRow> AvailableVisualAcuities { get; private set; }
       public ObservableCollection<VisualAcuityRow> SelectedVisualAcuity { get; private set; }
+      public ObservableCollection<String> VisualAcuityStates { get; set; }
 
       public DashboardViewModel()
       {
          InitializeNewTest();
          AvailableVisualAcuities = new ObservableCollection<VisualAcuityRow>();
          SelectedVisualAcuity = new ObservableCollection<VisualAcuityRow>();
-         VisualAcuityRow.CurrentState = VisualAcuityState.logMAR;
+         VisualAcuityRow.CurrentState = VisualAcuityState.foot;
+         populateVisualAcuities();
+         populateVisualAcuityStates();
+      }
+
+      private void populateVisualAcuityStates()
+      {
+         VisualAcuityStates = new ObservableCollection<string>
+            {"Foot", "Meter", "LogMAR", "Decimal"};
+      }
+
+      public void VAstateSelectionChanged(String newValue)
+      {
+         VisualAcuityRow.CurrentState = newValue.ToVisualAcuityState();
+         AvailableVisualAcuities.Clear();
          populateVisualAcuities();
       }
 

@@ -62,4 +62,36 @@ namespace EyeApsisApp.Models.Chart
    {
       foot, meter, decimale, logMAR
    }
+
+   public static class vsAcuityStateExtensions
+   {
+      public const String foot = "Foot";
+      public const String meter = "Meter";
+      public const String decimale = "Decimal";
+      public const String logMAR = "LogMAR";
+
+      public static VisualAcuityState ToVisualAcuityState(this String str)
+      {
+         switch (str)
+         {
+            case foot: { return VisualAcuityState.foot; }
+            case meter: { return VisualAcuityState.meter; }
+            case decimale: { return VisualAcuityState.decimale; }
+            case logMAR: { return VisualAcuityState.logMAR; }
+         }
+         return VisualAcuityState.foot;
+      }
+
+      public static String ToString(this VisualAcuityState vas)
+      {
+         switch (vas)
+         {
+            case VisualAcuityState.foot: { return foot; }
+            case VisualAcuityState.meter: { return meter; }
+            case VisualAcuityState.decimale: { return decimale; }
+            case VisualAcuityState.logMAR: { return logMAR; }
+         }
+         return foot;
+      }
+   }
 }
