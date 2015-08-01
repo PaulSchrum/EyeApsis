@@ -73,7 +73,11 @@
             MinHeight="100" SelectionMode="Single"
             ScrollViewer.VerticalScrollBarVisibility="Auto"
             ItemsSource="{Binding AvailableVisualAcuities}"
-            SelectedIndex="{Binding SelectedVisualAcuity}" MaxHeight="100" SelectionChanged="lbx_VisualAcuity_SelectionChanged" Loaded="lbx_VisualAcuity_Loaded"
+            SelectedIndex="{Binding SelectedVisualAcuity}" 
+            MaxHeight="100" 
+            SelectionChanged="lbx_VisualAcuity_SelectionChanged" 
+            Loaded="lbx_VisualAcuity_Loaded" 
+            PreviewMouseWheel="lbx_VisualAcuity_PreviewMouseWheel"
             >
             <ListView.ItemTemplate>
                <DataTemplate>

@@ -59,8 +59,13 @@ namespace EyeApsisApp
 
       private void TopLevelGrid_MouseWheel(object sender, MouseWheelEventArgs e)
       {
+         moveListviewSelction(e.Delta);
+      }
+
+      private void moveListviewSelction(int delta)
+      {
          int i = 1;
-         if (e.Delta > 0)
+         if (delta > 0)
             i *= -1;
 
          var newIndex = this.lbx_VisualAcuity.SelectedIndex + i;
@@ -76,5 +81,12 @@ namespace EyeApsisApp
          lbx_VisualAcuity.SelectedIndex = 7;
          lbx_VisualAcuity.ScrollIntoView(lbx_VisualAcuity.SelectedItem);
       }
+
+      private void lbx_VisualAcuity_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+      {
+         moveListviewSelction(e.Delta);
+         e.Handled = true;
+      }
+
    }
 }

@@ -23,7 +23,7 @@ namespace EyeApsisApp
          InitializeNewTest();
          AvailableVisualAcuities = new ObservableCollection<VisualAcuityRow>();
          SelectedVisualAcuity = new ObservableCollection<VisualAcuityRow>();
-         VisualAcuityRow.CurrentState = VisualAcuityState.meter;
+         VisualAcuityRow.CurrentState = VisualAcuityState.logMAR;
          populateVisualAcuities();
       }
 
