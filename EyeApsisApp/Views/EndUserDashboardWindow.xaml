@@ -43,7 +43,7 @@
          ></TextBox>
       <TabControl Grid.Row="1" Grid.Column="0" 
                   Grid.ColumnSpan="2" TabStripPlacement="Left"
-                  DataContext="{Binding ElementName=lbx_VisualAcuity, Path=SelectedIndex}"
+                  DataContext="{Binding SelectedVisualAcuity}"
                   >
          <TabItem x:Name="tbi_VisualAcuity" Background="#FFE6E796">
             <TabItem.Header>
@@ -86,7 +86,7 @@
                         </StackPanel>
                      </GroupBox>
                      <TextBlock 
-                        Text="{Binding Path=SelectedVisualAcuity}">Hi</TextBlock>
+                        Text="{Binding Path=Value_}"></TextBlock>
                                 
                   </StackPanel>
                </TabItem>
