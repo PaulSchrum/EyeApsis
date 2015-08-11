@@ -203,4 +203,28 @@ Acuity</comment>
     <value>Did not ask</value>
     <comment>Did not ask</comment>
   </data>
+  <data name="Dash_AcuityReadoutSystem" xml:space="preserve">
+    <value>Acuity Readout System:</value>
+    <comment>Acuity Readout System:</comment>
+  </data>
+  <data name="Dash_CanReadCurrentLine" xml:space="preserve">
+    <value>Subject Can Read Current Line</value>
+    <comment>Subject Can Read Current Line</comment>
+  </data>
+  <data name="Dash_LeftEye" xml:space="preserve">
+    <value>Left Eye</value>
+    <comment>Left Eye</comment>
+  </data>
+  <data name="Dash_RightEye" xml:space="preserve">
+    <value>Right Eye</value>
+    <comment>Right Eye</comment>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+    <comment>No</comment>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+    <comment>Yes</comment>
+  </data>
 </root>

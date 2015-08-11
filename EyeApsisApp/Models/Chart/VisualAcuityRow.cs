@@ -13,6 +13,8 @@ namespace EyeApsisApp.Models.Chart
       public String Meter { get; set; }
       public String Decimale { get; set; }
       public String LogMAR { get; set; }
+      public RowPassed LeftEyeVisualAcuity { get; set; }
+      public RowPassed RightEyeVisualAcuity { get; set; }
 
       public VisualAcuityRow(Double snellenDenom, String ft, String mtr, String decml, String lgMar)
       {
@@ -21,6 +23,8 @@ namespace EyeApsisApp.Models.Chart
          Meter = mtr;
          Decimale = decml;
          LogMAR = lgMar;
+         LeftEyeVisualAcuity = new RowPassed();
+         RightEyeVisualAcuity = new RowPassed();
       }
 
       public String Value_
@@ -56,6 +60,28 @@ namespace EyeApsisApp.Models.Chart
 
       public static VisualAcuityState CurrentState
       { get; set; }
+
+      public static readonly List<Double> allowableSnellens = new List<Double>
+         {
+            200.0, 160.0, 125.0, 100.0, 80.0, 
+            63.0, 50.0, 40.0, 32.0, 25.0, 20.0, 
+            16.0, 12.5, 10.0
+         };
+
+      public static VisualAcuityRow Create(Double snellenDenominatorToCreate)
+      {
+         var candidateValue = 
+            AcuityListAssociation.AvailableVisualAcuities.
+            SingleOrDefault(val => 
+               val.snellenDenominator == snellenDenominatorToCreate);
+
+         if (candidateValue == null) 
+            throw new ArgumentException
+               ("Snellen Denominator Value is not in list of allowed values.");
+
+         // else
+         return candidateValue;
+      }
    }
 
    public enum VisualAcuityState

@@ -101,6 +101,7 @@ namespace EyeApsisApp
          }
       }
 
+      //public AcuityListAssociation<RowPassedEnum> leftEyeAcuities {get; set;} = Create<RowPassedEnum>();
 
       private String rightEyeSurgicalAcuityCorrection_;
       public String RightEyeSurgicalAcuityCorrection
@@ -138,14 +139,14 @@ namespace EyeApsisApp
       }
 
 
-      private int colorSensitivity_;
-      public int ColorSensitivity
+      private int redGreenColorSensitivity_;
+      public int RedGreenColorSensitivity
       {
-         get { return colorSensitivity_; }
+         get { return redGreenColorSensitivity_; }
          set
          {
-            colorSensitivity_ = value;
-            RaisePropertyChanged("ColorSensitivity");
+            redGreenColorSensitivity_ = value;
+            RaisePropertyChanged("RedGreenColorSensitivity");
          }
       }
 
@@ -172,7 +173,6 @@ namespace EyeApsisApp
             RaisePropertyChanged("RightEyeContrastSensitivity");
          }
       }
-
 
       public event PropertyChangedEventHandler PropertyChanged;
       public void RaisePropertyChanged(String prop)

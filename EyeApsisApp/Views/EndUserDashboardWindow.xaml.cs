@@ -53,9 +53,12 @@ namespace EyeApsisApp
       private void lbx_VisualAcuity_SelectionChanged(
          object sender, SelectionChangedEventArgs e)
       {
+         if (0 == e.AddedItems.Count) return;
+         if (0 == lbx_VisualAcuity.Items.Count) return;
+         if (null == this.dataContxt) return;
          var visualAcuitySelection = lbx_VisualAcuity.SelectedIndex;
-         var selection = e.AddedItems.Cast<VisualAcuityRow>();
-         this.dataContxt.VisualAcuitySelectionChanged(selection);
+         var selections = e.AddedItems.Cast<VisualAcuityRow>();
+         this.dataContxt.VisualAcuitySelectionChanged(selections);
          lbx_VisualAcuity.SelectedIndex = visualAcuitySelection;
          lbx_VisualAcuity.ScrollIntoView(lbx_VisualAcuity.SelectedItem);
       }
