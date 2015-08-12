@@ -10,7 +10,7 @@
         MinWidth="360" MinHeight="360" Loaded="EndUserControlDashboard_Loaded"
         >
    <Window.Resources>
-      <yesNo:YesNoValueConverter x:Key="YesNoValueConvert" />
+      <yesNo:YesNoValueConverter x:Key="YesNoValueConverter" />
    </Window.Resources>
    <Grid x:Name="TopLevelGrid" 
          MouseWheel="TopLevelGrid_MouseWheel" 
@@ -41,7 +41,7 @@
                GotFocus="txt_subjectDistance_GotFocus"
          TabIndex="0" 
          ></TextBox>
-      <TabControl Grid.Row="1" Grid.Column="0" 
+      <TabControl Grid.Row="1" Grid.Column="0" x:Name="tab_mainTabControl"
                   Grid.ColumnSpan="2" TabStripPlacement="Left"
                   DataContext="{Binding SelectedVisualAcuity}"
                   >
@@ -52,35 +52,45 @@
                   FontSize="20">
                </TextBlock>
             </TabItem.Header>
-            <TabControl TabStripPlacement="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-               <TabItem HorizontalAlignment="Center"
-                        
+            <TabControl TabStripPlacement="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                        x:Name="tab_visualAcuityWhichEye"
+                        >
+               <TabItem HorizontalAlignment="Center" 
+                        DataContext="{Binding Path=LeftEyeVisualAcuity, Mode=TwoWay}"
                         >
                   <TabItem.Header>
                      <TextBlock FontSize="20"
                         Text="{x:Static properties:Resources.Dash_LeftEye}"></TextBlock>
                   </TabItem.Header>
                   <StackPanel Orientation="Vertical" >
-                     <GroupBox FontSize="16">
+                     <GroupBox FontSize="16" >
                         <GroupBox.Header>
                            <TextBlock Text="{x:Static properties:Resources.Dash_CanReadCurrentLine}"/>
                         </GroupBox.Header>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                            <RadioButton 
-                              Content="{x:Static properties:Resources.DidNotAsk}" Margin="0,0,16,0" 
-                              IsChecked="{Binding Path=DidPass, 
-                                 Converter={StaticResource YesNoValueConvert}, 
-                                 ConverterParameter={x:Static properties:Resources.DidNotAsk}}"
+                              Content="{x:Static properties:Resources.DidNotAsk}" Margin="0,0,12,0" 
+                              x:Name="rb_LeftEyeCanReadDidNotAsk"
+                              IsChecked="{Binding Path=SelectedVisualAcuity.LeftEyeVisualAcuity.DidPass, 
+                              Mode=TwoWay,
+                              Converter={StaticResource YesNoValueConverter}, 
+                              ConverterParameter={x:Static properties:Resources.DidNotAsk}}" Checked="rb_LeftEyeCanReadDidNotAsk_Checked"
                               />
-                           <RadioButton Content="{x:Static properties:Resources.Yes}" Margin="0,0,16,0" 
-                              IsChecked="{Binding Path=DidPass, 
-                                 Converter={StaticResource YesNoValueConvert}, 
-                                 ConverterParameter={x:Static properties:Resources.Yes}}"
+                           <RadioButton Content="{x:Static properties:Resources.Yes}" Margin="0,0,12,0" 
+                              x:Name="rb_LeftEyeCanReadYes"
+                              IsChecked="{Binding Path=SelectedVisualAcuity.LeftEyeVisualAcuity.DidPass, 
+                              Mode=TwoWay,
+                              Converter={StaticResource YesNoValueConverter}, 
+                              ConverterParameter={x:Static properties:Resources.Yes}}" 
+                              Checked="rb_LeftEyeCanReadYes_Checked"
                               />
                            <RadioButton Content="{x:Static properties:Resources.No}"
-                              IsChecked="{Binding Path=DidPass, 
-                                 Converter={StaticResource YesNoValueConvert}, 
-                                 ConverterParameter={x:Static properties:Resources.No}}"
+                              x:Name="rb_LeftEyeCanReadNo"
+                              IsChecked="{Binding Path=SelectedVisualAcuity.LeftEyeVisualAcuity.DidPass, 
+                              Mode=TwoWay,
+                              Converter={StaticResource YesNoValueConverter}, 
+                              ConverterParameter={x:Static properties:Resources.No}}" 
+                              Checked="rb_LeftEyeCanReadNo_Checked"
                               />
 
                         </StackPanel>

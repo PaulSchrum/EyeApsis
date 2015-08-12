@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace EyeApsisApp
 {
@@ -28,6 +29,7 @@ namespace EyeApsisApp
          InitializeComponent();
          thisApp = (App)Application.Current;
          dataContxt = (DashboardViewModel)this.TopLevelGrid.DataContext;
+         dataContxt.PropertyChanged += NotifyMe;
       }
 
       private void userControlWindow_Closed(object sender, EventArgs e)
@@ -117,6 +119,59 @@ namespace EyeApsisApp
       private void EndUserControlDashboard_Loaded(object sender, RoutedEventArgs e)
       {
          txt_subjectDistance.Focus();
+      }
+
+      private void NotifyMe(object sender, PropertyChangedEventArgs e)
+      {
+         if(e.PropertyName.Equals("SelectedVisualAcuity"))
+         {
+            var tabIndex = this.tab_mainTabControl.SelectedIndex;
+            if(tabIndex == 0)
+            {  // if tab_mainTabControl is set to Visual Acuity
+               var whichEyeIndex = this.tab_visualAcuityWhichEye.SelectedIndex;
+               if(whichEyeIndex == 0)
+               { // if tab_visualAcuityWhichEye is Left Eye
+                  var LeftEyeVA = dataContxt.SelectedVisualAcuity.LeftEyeVisualAcuity.DidPass;
+                  if(LeftEyeVA.Equals("No"))
+                  {
+                     rb_LeftEyeCanReadYes.IsChecked = false;
+                     rb_LeftEyeCanReadDidNotAsk.IsChecked = false;
+                     rb_LeftEyeCanReadNo.IsChecked = true;
+                  }
+                  else if (LeftEyeVA.Equals("Yes"))
+                  {
+                     rb_LeftEyeCanReadNo.IsChecked = false;
+                     rb_LeftEyeCanReadDidNotAsk.IsChecked = false;
+                     rb_LeftEyeCanReadYes.IsChecked = true;
+                  }
+                  else
+                  {
+                     rb_LeftEyeCanReadNo.IsChecked = false;
+                     rb_LeftEyeCanReadYes.IsChecked = false;
+                     rb_LeftEyeCanReadDidNotAsk.IsChecked = true;
+                  }
+               }
+
+            }
+         }
+      }
+
+      private void rb_LeftEyeCanReadNo_Checked(object sender, RoutedEventArgs e)
+      {
+         dataContxt.SelectedVisualAcuity.LeftEyeVisualAcuity.DidPass =
+            RowPassedStringList.IsAvailable("No");
+      }
+
+      private void rb_LeftEyeCanReadYes_Checked(object sender, RoutedEventArgs e)
+      {
+         dataContxt.SelectedVisualAcuity.LeftEyeVisualAcuity.DidPass =
+            RowPassedStringList.IsAvailable("Yes");
+      }
+
+      private void rb_LeftEyeCanReadDidNotAsk_Checked(object sender, RoutedEventArgs e)
+      {
+         dataContxt.SelectedVisualAcuity.LeftEyeVisualAcuity.DidPass =
+            RowPassedStringList.IsAvailable("Did Not Ask");
       }
    }
 }
