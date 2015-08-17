@@ -7,7 +7,7 @@
         Title="{x:Static properties:Resources.EyeApsis}" 
         Height="440" Width="404" 
         Closed="userControlWindow_Closed" 
-        MinWidth="360" MinHeight="360" Loaded="EndUserControlDashboard_Loaded"
+        MinWidth="360" MinHeight="400" Loaded="EndUserControlDashboard_Loaded"
         >
    <Window.Resources>
       <yesNo:YesNoValueConverter x:Key="YesNoValueConverter" />
@@ -71,25 +71,14 @@
                            <RadioButton 
                               Content="{x:Static properties:Resources.DidNotAsk}" Margin="0,0,12,0" 
                               x:Name="rb_LeftEyeCanReadDidNotAsk"
-                              IsChecked="{Binding Path=SelectedVisualAcuity.LeftEyeVisualAcuity.DidPass, 
-                              Mode=TwoWay,
-                              Converter={StaticResource YesNoValueConverter}, 
-                              ConverterParameter={x:Static properties:Resources.DidNotAsk}}" Checked="rb_LeftEyeCanReadDidNotAsk_Checked"
+                              Checked="rb_LeftEyeCanReadDidNotAsk_Checked"
                               />
                            <RadioButton Content="{x:Static properties:Resources.Yes}" Margin="0,0,12,0" 
                               x:Name="rb_LeftEyeCanReadYes"
-                              IsChecked="{Binding Path=SelectedVisualAcuity.LeftEyeVisualAcuity.DidPass, 
-                              Mode=TwoWay,
-                              Converter={StaticResource YesNoValueConverter}, 
-                              ConverterParameter={x:Static properties:Resources.Yes}}" 
                               Checked="rb_LeftEyeCanReadYes_Checked"
                               />
                            <RadioButton Content="{x:Static properties:Resources.No}"
                               x:Name="rb_LeftEyeCanReadNo"
-                              IsChecked="{Binding Path=SelectedVisualAcuity.LeftEyeVisualAcuity.DidPass, 
-                              Mode=TwoWay,
-                              Converter={StaticResource YesNoValueConverter}, 
-                              ConverterParameter={x:Static properties:Resources.No}}" 
                               Checked="rb_LeftEyeCanReadNo_Checked"
                               />
 

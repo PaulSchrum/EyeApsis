@@ -29,6 +29,8 @@ namespace EyeApsisApp
          InitializeComponent();
          thisApp = (App)Application.Current;
          dataContxt = (DashboardViewModel)this.TopLevelGrid.DataContext;
+
+         // from http://stackoverflow.com/questions/15439841/mvvm-in-wpf-how-to-alert-viewmodel-of-changes-in-model-or-should-i
          dataContxt.PropertyChanged += NotifyMe;
       }
 
