@@ -124,6 +124,15 @@ namespace EyeApsisApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Acuity Correction:.
+        /// </summary>
+        public static string Dash_AcuityCorrection {
+            get {
+                return ResourceManager.GetString("Dash_AcuityCorrection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Acuity Readout System:.
         /// </summary>
         public static string Dash_AcuityReadoutSystem {

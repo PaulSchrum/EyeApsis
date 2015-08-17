@@ -13,10 +13,8 @@ namespace EyeApsisApp
       public VisionTestRecord()
       {
          TestDateAndTime = DateTime.Now;
-         LeftEyeSurgicalAcuityCorrection = Resources.DidNotAsk;
-         LeftEyeCorrection = Resources.DidNotAsk;
-         RightEyeSurgicalAcuityCorrection = Resources.DidNotAsk;
-         RightEyeCorrection = Resources.DidNotAsk;
+         LeftEyeAcuityCorrection = Resources.DidNotAsk;
+         RightEyeAcuityCorrection = Resources.DidNotAsk;
       }
 
       private String subjectFirstName_;
@@ -65,27 +63,14 @@ namespace EyeApsisApp
          }
       }
 
-
-      private String leftEyeSurgicalAcuityCorrection_;
-      public String LeftEyeSurgicalAcuityCorrection
+      private String leftEyeAcuityCorrection_;
+      public String LeftEyeAcuityCorrection
       {
-         get { return leftEyeSurgicalAcuityCorrection_; }
+         get { return leftEyeAcuityCorrection_; }
          set
          {
-            leftEyeSurgicalAcuityCorrection_ = value;
-            RaisePropertyChanged("LeftEyeSurgicalAcuityCorrection");
-         }
-      }
-
-
-      private String leftEyeCorrection_;
-      public String LeftEyeCorrection
-      {
-         get { return leftEyeCorrection_; }
-         set
-         {
-            leftEyeCorrection_ = value;
-            RaisePropertyChanged("LeftEyeCorrection");
+            leftEyeAcuityCorrection_ = value;
+            RaisePropertyChanged("LeftEyeAcuityCorrection");
          }
       }
 
@@ -103,26 +88,14 @@ namespace EyeApsisApp
 
       //public AcuityListAssociation<RowPassedEnum> leftEyeAcuities {get; set;} = Create<RowPassedEnum>();
 
-      private String rightEyeSurgicalAcuityCorrection_;
-      public String RightEyeSurgicalAcuityCorrection
+      private String rightEyeAcuityCorrection_;
+      public String RightEyeAcuityCorrection
       {
-         get { return rightEyeSurgicalAcuityCorrection_; }
+         get { return rightEyeAcuityCorrection_; }
          set
          {
-            rightEyeSurgicalAcuityCorrection_ = value;
-            RaisePropertyChanged("RightEyeSurgicalAcuityCorrection");
-         }
-      }
-
-
-      private String rightEyeCorrection_;
-      public String RightEyeCorrection
-      {
-         get { return rightEyeCorrection_; }
-         set
-         {
-            rightEyeCorrection_ = value;
-            RaisePropertyChanged("RightEyeCorrection");
+            rightEyeAcuityCorrection_ = value;
+            RaisePropertyChanged("RightEyeAcuityCorrection");
          }
       }
 

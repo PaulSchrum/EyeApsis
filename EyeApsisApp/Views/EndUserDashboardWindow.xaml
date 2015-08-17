@@ -63,6 +63,11 @@
                         Text="{x:Static properties:Resources.Dash_LeftEye}"></TextBlock>
                   </TabItem.Header>
                   <StackPanel Orientation="Vertical" >
+                     <StackPanel Orientation="Horizontal">
+                        <Label 
+                           Content="{x:Static properties:Resources.Dash_AcuityCorrection}" 
+                           FontSize="20" />
+                     </StackPanel>
                      <GroupBox FontSize="16" >
                         <GroupBox.Header>
                            <TextBlock Text="{x:Static properties:Resources.Dash_CanReadCurrentLine}"/>
@@ -134,7 +139,8 @@
                 >
             </ComboBox>
          </StackPanel>
-         <ListView Name="lbx_VisualAcuity"
+         <ListView 
+            Name="lbx_VisualAcuity"
             MinHeight="100" SelectionMode="Single"
             ScrollViewer.VerticalScrollBarVisibility="Auto"
             ItemsSource="{Binding AvailableVisualAcuities, Mode=TwoWay}" 
@@ -144,6 +150,11 @@
             Loaded="lbx_VisualAcuity_Loaded" 
             PreviewMouseWheel="lbx_VisualAcuity_PreviewMouseWheel"
             >
+            <ListView.Resources>
+               <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="LightBlue"/>
+               <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="LightBlue"/>
+               <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+            </ListView.Resources>
             <ListView.ItemTemplate>
                <DataTemplate>
                   <Grid>

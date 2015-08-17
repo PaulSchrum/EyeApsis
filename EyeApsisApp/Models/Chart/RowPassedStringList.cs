@@ -44,8 +44,5 @@ namespace EyeApsisApp.Models.Chart
       {
          return Values.Where(strng => strng.Equals(str)).Single();
       }
-      /* * / Next: Hook up this string list with the radio buttons on the dashboard window /* */
-      // this requires adding an instance of AcuityListAssociation<RowPassedEnum> leftEyeAcuities
-      // and binding to it using GroupName= or what ever you can get to work
    }
 }

@@ -227,4 +227,8 @@ Acuity</comment>
     <value>Yes</value>
     <comment>Yes</comment>
   </data>
+  <data name="Dash_AcuityCorrection" xml:space="preserve">
+    <value>Acuity Correction:</value>
+    <comment>Acuity Correction</comment>
+  </data>
 </root>

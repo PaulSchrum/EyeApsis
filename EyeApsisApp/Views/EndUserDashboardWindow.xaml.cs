@@ -65,6 +65,7 @@ namespace EyeApsisApp
          this.dataContxt.VisualAcuitySelectionChanged(selections);
          lbx_VisualAcuity.SelectedIndex = visualAcuitySelection;
          lbx_VisualAcuity.ScrollIntoView(lbx_VisualAcuity.SelectedItem);
+         //SystemColors.HighlightTextBrushKey
       }
 
       private void TopLevelGrid_MouseWheel(object sender, MouseWheelEventArgs e)
@@ -115,6 +116,7 @@ namespace EyeApsisApp
          {
             case Key.Down: { moveListviewSelction(-1); break; }
             case Key.Up: { moveListviewSelction(1); break; }
+            case Key.F4: { App.Current.Shutdown(); break; }
          }
       }
 
